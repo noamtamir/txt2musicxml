@@ -1,16 +1,19 @@
 from abc import ABC
 from dataclasses import dataclass, field
 from itertools import count
+from pathlib import Path
 from typing import List, Protocol, Union
 from xml.dom import minidom
 from xml.etree import ElementTree
 
-from txt2musicxml.constants import (CHORDS_NAME_TO_XML_MATRIX, MIDDLE_LINE_ON_G_CLEF,
-                       MIDDLE_OCTAVE_ON_G_CLEF, MUSICXML_HEADERS,
-                       MUSICXML_TEMPLATE_PATH, NO_STEM, NOTE_TYPE_MAP,
-                       SLASH_NOTEHEAD)
-from txt2musicxml.models import (Bar, BaseNode, Bass, BassAlteration, BassNote, Chord, Line,
-                    Root, RootAlteration, RootNote, Sheet, Suffix)
+from txt2musicxml.constants import (CHORDS_NAME_TO_XML_MATRIX,
+                                    MIDDLE_LINE_ON_G_CLEF,
+                                    MIDDLE_OCTAVE_ON_G_CLEF, MUSICXML_HEADERS,
+                                    MUSICXML_TEMPLATE_FILENAME, NO_STEM,
+                                    NOTE_TYPE_MAP, SLASH_NOTEHEAD)
+from txt2musicxml.models import (Bar, BaseNode, Bass, BassAlteration, BassNote,
+                                 Chord, Line, Root, RootAlteration, RootNote,
+                                 Sheet, Suffix)
 
 
 class XmlNodeGeneratorProtocol(Protocol):
@@ -395,7 +398,8 @@ class SheetXmlGenerator:
 
     @staticmethod
     def _init_musicxml_tree() -> ElementTree.Element:
-        tree = ElementTree.parse(MUSICXML_TEMPLATE_PATH)
+        filepath = Path(__file__).parent / MUSICXML_TEMPLATE_FILENAME
+        tree = ElementTree.parse(filepath)
         return tree.getroot()
 
     @staticmethod

@@ -1,10 +1,10 @@
 from antlr4 import CommonTokenStream, InputStream
 
+from tests.mock_sheet import mock_sheet
 from txt2musicxml.concrete_chords_visitor import ConcreteChordsVisitor
 from txt2musicxml.grammer.ChordsLexer import ChordsLexer
 from txt2musicxml.grammer.ChordsParser import ChordsParser
 from txt2musicxml.models import Sheet
-from tests.mock_sheet import mock_sheet
 
 
 def test_visit():

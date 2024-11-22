@@ -2,8 +2,9 @@ from antlr4 import ParserRuleContext
 
 from txt2musicxml.grammer.ChordsParser import ChordsParser
 from txt2musicxml.grammer.ChordsVisitor import ChordsVisitor
-from txt2musicxml.models import (Alteration, Bar, Bass, BassAlteration, BassNote, Chord,
-                    Line, Root, RootAlteration, RootNote, Sheet, Suffix)
+from txt2musicxml.models import (Alteration, Bar, Bass, BassAlteration,
+                                 BassNote, Chord, Line, Root, RootAlteration,
+                                 RootNote, Sheet, Suffix)
 
 
 class ConcreteChordsVisitor(ChordsVisitor):
