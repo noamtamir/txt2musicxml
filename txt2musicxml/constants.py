@@ -2,7 +2,7 @@ MIDDLE_LINE_ON_G_CLEF = "B"
 MIDDLE_OCTAVE_ON_G_CLEF = "4"
 NO_STEM = "none"
 SLASH_NOTEHEAD = "slash"
-MUSICXML_TEMPLATE_PATH = "txt2musicxml/empty_template.xml"
+MUSICXML_TEMPLATE_PATH = "./txt2musicxml/empty_template.xml"
 MUSICXML_HEADERS = """<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">"""  # noqa: E501
 

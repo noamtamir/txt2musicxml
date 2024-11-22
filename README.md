@@ -1,6 +1,11 @@
 # txt2musicxml
 A simple tool to convert chords from text to musicxml. Musicxml files can be opened with most notation software (for example [MuseScore](https://musescore.org/), which is free and opensource).
 
+## Install
+```shell
+pipx install txt2musicxml
+```
+
 ## Usage
 pipe a string of chords into the cli
 ```shell
