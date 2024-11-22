@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/txt2musicxml/main.py",
+      "console": "integratedTerminal",
+      "args": ["<", "tests/crd_files/la_bamba.crd"],
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

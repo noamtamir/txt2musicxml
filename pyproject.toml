@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "txt2musicxml"
+version = "0.1.0"
+description = "CLI tool to convert chords written in simple text to musicxml files that can be used with a music notation software"
+authors = ["noamtamir <noam.tamir@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+antlr4-python3-runtime = "^4.13.2"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.13.0"
+black = "^24.10.0"
+flake8 = "^7.1.1"
+isort = "^5.13.2"
+pytest = "^8.3.3"
+types-antlr4-python3-runtime = "^4.13.0.20240519"
+
+[tool.mypy]
+exclude = "txt2musicxml/grammer"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+txt2musicxml = 'txt2musicxml.main:main'
