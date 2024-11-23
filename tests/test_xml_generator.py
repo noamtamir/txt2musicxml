@@ -8,7 +8,7 @@ def test_generate_sheet():
     sheet = mock_sheet()
     sheet_xml_generator = SheetXmlGenerator(sheet)
     result = sheet_xml_generator.generate_xml()
-    with open("tests/xml_files/aguas_de_marco_snippet.xml", "r") as f:
+    with open("tests/xml_files/aguas_de_marco_snippet.musicxml", "r") as f:
         expected = f.read()
     expected == result
 

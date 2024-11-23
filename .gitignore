@@ -20,3 +20,4 @@ __pycache__
 TODO.md
 .pytest_cache
 .mypy_cache
+future_syntax_proposition.crd

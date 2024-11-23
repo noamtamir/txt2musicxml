@@ -2,6 +2,7 @@
 A simple tool to convert chords from text to musicxml. Musicxml files can be opened with most notation software (for example [MuseScore](https://musescore.org/), which is free and opensource).
 
 ## Install
+use [pipx](https://github.com/pypa/pipx) to install
 ```shell
 pipx install txt2musicxml
 ```
@@ -26,7 +27,8 @@ Bbmaj7 Bb7 | C7/E Ebm6 |
 Bbmaj7/F Bb7 | C7/E Ebm6 |
 ```
 
-More info in [SYNTAX.md](./SYNTAX.md)
+- More info in [SYNTAX.md](./SYNTAX.md)
+- More examples: [./examples/](./examples/)
 
 ## Developing Locally
 ### Dependencies

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "txt2musicxml"
-version = "0.1.2"
+version = "0.1.3"
 description = "CLI tool to convert chords written in simple text to musicxml files that can be used with a music notation software"
 authors = ["noamtamir <noam.tamir@gmail.com>"]
 license = "MIT"
