@@ -2,7 +2,7 @@ from abc import ABC
 from dataclasses import dataclass, field
 from itertools import count
 from pathlib import Path
-from typing import List, Protocol, Union
+from typing import List, Optional, Protocol, Union
 from xml.dom import minidom
 from xml.etree import ElementTree
 
@@ -38,7 +38,7 @@ class XmlLeafGeneratorProtocol(Protocol):
 
 @dataclass
 class BaseXmlLeafGenerator:
-    ast_node: RootNote | BassNote | RootAlteration | BassAlteration
+    ast_node: Union[RootNote, BassNote, RootAlteration, BassAlteration]
     tag: str
     text: str = field(init=False)
 
@@ -84,9 +84,9 @@ class PitchXmlGeneratorProtocol(Protocol):
 
 class PitchXmlGeneratorMixin(ABC):
     note_xml_generator: Union[RootNoteXmlGenerator, BassNoteXmlGenerator]
-    alteration_xml_generator: (
-        Union[RootAlterationXmlGenerator, BassAlterationXmlGenerator] | None
-    )
+    alteration_xml_generator: Union[
+        RootAlterationXmlGenerator, BassAlterationXmlGenerator, None
+    ]
     tag: str
 
     def generate_xml(self) -> ElementTree.Element:
@@ -101,7 +101,7 @@ class PitchXmlGeneratorMixin(ABC):
 class RootXmlGenerator(PitchXmlGeneratorMixin):
     ast_node: Root
     note_xml_generator: RootNoteXmlGenerator = field(init=False)
-    alteration_xml_generator: RootAlterationXmlGenerator | None = None
+    alteration_xml_generator: Union[RootAlterationXmlGenerator, None] = None
     tag: str = "root"
 
     def __post_init__(self):
@@ -116,7 +116,7 @@ class RootXmlGenerator(PitchXmlGeneratorMixin):
 class BassXmlGenerator(PitchXmlGeneratorMixin):
     ast_node: Bass
     note_xml_generator: BassNoteXmlGenerator = field(init=False)
-    alteration_xml_generator: BassAlterationXmlGenerator | None = None
+    alteration_xml_generator: Union[BassAlterationXmlGenerator, None] = None
     tag: str = "bass"
 
     def __post_init__(self):
@@ -129,7 +129,7 @@ class BassXmlGenerator(PitchXmlGeneratorMixin):
 
 @dataclass
 class SuffixXmlGenerator:
-    ast_node: Suffix | None
+    ast_node: Optional[Suffix]
     chord_type: dict = field(init=False)
 
     def __post_init__(self):

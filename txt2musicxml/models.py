@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import List
+from typing import List, Optional
 
 
 class BaseNode:
@@ -75,19 +75,19 @@ class BassAlteration(Alteration):
 @dataclass
 class Pitch(BaseNode):
     note: Leaf
-    alteration: Leaf | None = None
+    alteration: Optional[Leaf] = None
 
 
 @dataclass
 class Root(Pitch):
     note: RootNote
-    alteration: RootAlteration | None = None
+    alteration: Optional[RootAlteration] = None
 
 
 @dataclass
 class Bass(Pitch):
     note: BassNote
-    alteration: BassAlteration | None = None
+    alteration: Optional[BassAlteration] = None
 
 
 @dataclass
@@ -98,8 +98,8 @@ class Suffix(Leaf):
 @dataclass
 class Chord(BaseNode):
     root: Root
-    suffix: Suffix | None = None
-    bass: Bass | None = None
+    suffix: Optional[Suffix] = None
+    bass: Optional[Bass] = None
 
     def __str__(self):
         chord_text = self.root.note.value if self.root.note else ""

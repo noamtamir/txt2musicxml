@@ -1,3 +1,5 @@
+from typing import Union
+
 from antlr4 import ParserRuleContext
 
 from txt2musicxml.grammer.ChordsParser import ChordsParser
@@ -52,7 +54,9 @@ class ConcreteChordsVisitor(ChordsVisitor):
         return Bass(note, alteration)
 
     # Visit a parse tree produced by ChordsParser#note.
-    def visitNote(self, ctx: ChordsParser.NoteContext) -> RootNote | BassNote:
+    def visitNote(
+        self, ctx: ChordsParser.NoteContext
+    ) -> Union[RootNote, BassNote]:
         if self._is_child_of_root_ctx(ctx):
             return RootNote(ctx.getText())
         if self._is_child_of_bass_ctx(ctx):

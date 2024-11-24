@@ -2,7 +2,7 @@
 A simple tool to convert chords from text to musicxml. Musicxml files can be opened with most notation software (for example [MuseScore](https://musescore.org/), which is free and opensource).
 
 ## Install
-use [pipx](https://github.com/pypa/pipx) to install
+use [pipx](https://github.com/pypa/pipx)
 ```shell
 pipx install txt2musicxml
 ```
@@ -43,7 +43,7 @@ In order to change the grammer and regenerate lexer/parser/etc:
 - [antlr](https://www.antlr.org/)
 
 For other development:
-- [python](https://www.python.org/) (3.13) 
+- [python ^3.9](https://www.python.org/)
     - I suggest using [pyenv](https://github.com/pyenv/pyenv) to manage multiple python versions on your machine
 - [poetry](https://python-poetry.org/) - to manage virtual env
 - [Make](https://www.gnu.org/software/make/) - to help run useful commands
