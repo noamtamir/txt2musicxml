@@ -10,10 +10,10 @@ pipx install txt2musicxml
 ## Usage
 pipe a string of chords into the cli
 ```shell
-echo 'Cmaj7 A7 | Dm9 G7b913 |' | txt2musicxml
+echo -n 'Cmaj7 A7 | Dm9 G7b913 |' | txt2musicxml
 ```
 or redirect input/output from/to a file
-```
+```shell
 txt2musicxml < path/to/Thriller.crd > path/to/Thriller.musicxml
 ```
 
@@ -29,6 +29,12 @@ Bbmaj7/F Bb7 | C7/E Ebm6 |
 
 - More info in [SYNTAX.md](./SYNTAX.md)
 - More examples: [./examples/](./examples/)
+
+## Export to PDF (with MuseScore)
+[Install MuseScore 3](https://musescore.org/en/download) (not tested with version 4) and make sure to add `mscore` to your PATH.
+```shell
+TMPSUFFIX=.musicxml; mscore -o path/to/output.pdf =(txt2musicxml < path/to/input.crd)
+```
 
 ## Developing Locally
 ### Dependencies
