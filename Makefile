@@ -5,8 +5,8 @@ lint:
 	flake8 --exclude .git,__pycache__,.mypy_cache,.pytest_cache,.venv,.vscode,txt2musicxml/grammer
 
 format:
-	black -l 79 .
 	isort .
+	black -l 79 .
 
 mypy:
 	PYTHONPATH=txt2musicxml MYPYPATH=txt2musicxml mypy txt2musicxml

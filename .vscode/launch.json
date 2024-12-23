@@ -7,7 +7,7 @@
       "request": "launch",
       "program": "${workspaceFolder}/txt2musicxml/main.py",
       "console": "integratedTerminal",
-      "args": ["<", "tests/crd_files/la_bamba.crd"],
+      "args": ["<", "examples/autumn_leaves.crd"],
       "envFile": "${workspaceFolder}/.env"
     }
   ]

@@ -6,14 +6,30 @@ from typing import List, Optional, Protocol, Union
 from xml.dom import minidom
 from xml.etree import ElementTree
 
-from txt2musicxml.constants import (CHORDS_NAME_TO_XML_MATRIX,
-                                    MIDDLE_LINE_ON_G_CLEF,
-                                    MIDDLE_OCTAVE_ON_G_CLEF, MUSICXML_HEADERS,
-                                    MUSICXML_TEMPLATE_FILENAME, NO_STEM,
-                                    NOTE_TYPE_MAP, SLASH_NOTEHEAD)
-from txt2musicxml.models import (Bar, BaseNode, Bass, BassAlteration, BassNote,
-                                 Chord, Line, Root, RootAlteration, RootNote,
-                                 Sheet, Suffix)
+from txt2musicxml.constants import (
+    CHORDS_NAME_TO_XML_MATRIX,
+    MIDDLE_LINE_ON_G_CLEF,
+    MIDDLE_OCTAVE_ON_G_CLEF,
+    MUSICXML_HEADERS,
+    MUSICXML_TEMPLATE_FILENAME,
+    NO_STEM,
+    NOTE_TYPE_MAP,
+    SLASH_NOTEHEAD,
+)
+from txt2musicxml.models import (
+    Bar,
+    BaseNode,
+    Bass,
+    BassAlteration,
+    BassNote,
+    Chord,
+    Line,
+    Root,
+    RootAlteration,
+    RootNote,
+    Sheet,
+    Suffix,
+)
 
 
 class XmlNodeGeneratorProtocol(Protocol):
@@ -242,13 +258,15 @@ class BarXmlGenerator:
 
     def __post_init__(self):
         self._validate_timesignature_denominator()
-        self._calculate_rhythm()
+        if not self.ast_node.measure_repeat:
+            self._calculate_rhythm()
 
     def generate_xml(
         self,
         new_line: bool,
         bar_counter: count,
         is_first_bar_in_sheet: bool = False,
+        is_prev_repeat: bool = False,
     ) -> ElementTree.Element:
         measure_element = ElementTree.Element("measure")
         measure_element.attrib["number"] = str(next(bar_counter))
@@ -259,10 +277,20 @@ class BarXmlGenerator:
         attributes_element = ElementTree.SubElement(
             measure_element, "attributes"
         )
-        divisions_element = ElementTree.SubElement(
-            attributes_element, "divisions"
-        )
-        divisions_element.text = str(self.divisions)
+        if is_prev_repeat and not self.ast_node.measure_repeat:
+            measure_style_element = ElementTree.SubElement(
+                attributes_element, "measure-style"
+            )
+            measure_repeat_element = ElementTree.SubElement(
+                measure_style_element, "measure-repeat"
+            )
+            measure_repeat_element.attrib["type"] = "stop"
+            measure_repeat_element.text = "1"
+        if not self.ast_node.measure_repeat:
+            divisions_element = ElementTree.SubElement(
+                attributes_element, "divisions"
+            )
+            divisions_element.text = str(self.divisions)
         if is_first_bar_in_sheet:
             key_element = ElementTree.SubElement(
                 attributes_element, "key"
@@ -283,18 +311,28 @@ class BarXmlGenerator:
             sign_element.text = "G"
             line_element = ElementTree.SubElement(clef_element, "line")
             line_element.text = "2"
-        chord_elements: list[ElementTree.Element] = []
-        for duration_and_chord in list(
-            zip(self.ast_node.chords, self.chord_durations)
-        ):
-            chord_elements.extend(
-                ChordXmlGenerator(
-                    duration_and_chord[0],
-                    duration_and_chord[1],
-                    self.divisions,
-                ).generate_xml()
+        if self.ast_node.chords:
+            chord_elements: list[ElementTree.Element] = []
+            for duration_and_chord in list(
+                zip(self.ast_node.chords, self.chord_durations)
+            ):
+                chord_elements.extend(
+                    ChordXmlGenerator(
+                        duration_and_chord[0],
+                        duration_and_chord[1],
+                        self.divisions,
+                    ).generate_xml()
+                )
+            measure_element.extend(chord_elements)
+        elif self.ast_node.measure_repeat:
+            measure_style_element = ElementTree.SubElement(
+                attributes_element, "measure-style"
             )
-        measure_element.extend(chord_elements)
+            measure_repeat_element = ElementTree.SubElement(
+                measure_style_element, "measure-repeat"
+            )
+            measure_repeat_element.attrib["type"] = "start"
+            measure_repeat_element.text = "1"
         return measure_element
 
     def _validate_timesignature_denominator(self):
@@ -354,9 +392,13 @@ class LineXmlGenerator:
     ast_node: Line
 
     def generate_xml(
-        self, is_first_line: bool, bar_counter: count
-    ) -> list[ElementTree.Element]:
+        self,
+        is_first_line: bool,
+        bar_counter: count,
+        is_prev_repeat: bool = False,
+    ) -> tuple[list[ElementTree.Element], bool]:
         bar_elements = []
+        # is_prev_repeat = False
         for i, bar in enumerate(self.ast_node.bars):
             new_line = False
             is_first_bar = is_first(i)
@@ -367,10 +409,17 @@ class LineXmlGenerator:
                 is_first_bar_in_sheet = True
             bar_elements.append(
                 BarXmlGenerator(bar).generate_xml(
-                    new_line, bar_counter, is_first_bar_in_sheet
+                    new_line,
+                    bar_counter,
+                    is_first_bar_in_sheet,
+                    is_prev_repeat,
                 )
             )
-        return bar_elements
+            if bar.measure_repeat:
+                is_prev_repeat = True
+            else:
+                is_prev_repeat = False
+        return bar_elements, is_prev_repeat
 
 
 @dataclass
@@ -386,13 +435,13 @@ class SheetXmlGenerator:
         xml_root = self._init_musicxml_tree()
         part_element: ElementTree.Element = xml_root.find("part")  # type: ignore # noqa: E501
         bar_elements: list[ElementTree.Element] = []
+        is_prev_repeat = False
         for i, line in enumerate(self.ast_node.lines):
             is_first_line = is_first(i)
-            bar_elements.extend(
-                LineXmlGenerator(line).generate_xml(
-                    is_first_line, self.bar_counter
-                )
+            line_xml, is_prev_repeat = LineXmlGenerator(line).generate_xml(
+                is_first_line, self.bar_counter, is_prev_repeat
             )
+            bar_elements.extend(line_xml)
         part_element.extend(bar_elements)
         return self._to_string(MUSICXML_HEADERS, xml_root)
 

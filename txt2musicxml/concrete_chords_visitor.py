@@ -4,9 +4,20 @@ from antlr4 import ParserRuleContext
 
 from txt2musicxml.grammer.ChordsParser import ChordsParser
 from txt2musicxml.grammer.ChordsVisitor import ChordsVisitor
-from txt2musicxml.models import (Alteration, Bar, Bass, BassAlteration,
-                                 BassNote, Chord, Line, Root, RootAlteration,
-                                 RootNote, Sheet, Suffix)
+from txt2musicxml.models import (
+    Alteration,
+    Bar,
+    Bass,
+    BassAlteration,
+    BassNote,
+    Chord,
+    Line,
+    Root,
+    RootAlteration,
+    RootNote,
+    Sheet,
+    Suffix,
+)
 
 
 class ConcreteChordsVisitor(ChordsVisitor):
@@ -26,8 +37,13 @@ class ConcreteChordsVisitor(ChordsVisitor):
     # Visit a parse tree produced by ChordsParser#bar.
     def visitBar(self, ctx: ChordsParser.BarContext) -> Bar:
         chords_ctx = ctx.chord()
-        chords = [self.visit(chord) for chord in chords_ctx]
-        return Bar(chords)
+        measure_repeat_ctx = ctx.MEASURE_REPEAT()
+        if chords_ctx:
+            chords = [self.visit(chord) for chord in chords_ctx]
+            return Bar(chords=chords)
+        elif measure_repeat_ctx:
+            return Bar(measure_repeat=True)
+        return Bar()  # satisfies mypy, will never be called
 
     # Visit a parse tree produced by ChordsParser#chord.
     def visitChord(self, ctx: ChordsParser.ChordContext) -> Chord:
@@ -37,7 +53,7 @@ class ConcreteChordsVisitor(ChordsVisitor):
         suffix = self.visit(suffix_ctx) if suffix_ctx else None
         bass_ctx = ctx.bass()
         bass = self.visit(bass_ctx) if bass_ctx else None
-        return Chord(root, suffix, bass)
+        return Chord(root, suffix, bass)  # type: ignore
 
     # Visit a parse tree produced by ChordsParser#root.
     def visitRoot(self, ctx: ChordsParser.RootContext) -> Root:

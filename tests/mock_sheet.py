@@ -1,5 +1,16 @@
-from models import (Bar, Bass, BassAlteration, BassNote, Chord, Line, Root,
-                    RootAlteration, RootNote, Sheet, Suffix)
+from models import (
+    Bar,
+    Bass,
+    BassAlteration,
+    BassNote,
+    Chord,
+    Line,
+    Root,
+    RootAlteration,
+    RootNote,
+    Sheet,
+    Suffix,
+)
 
 
 def mock_sheet():

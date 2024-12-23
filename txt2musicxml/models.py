@@ -121,6 +121,11 @@ class Chord(BaseNode):
 
 
 @dataclass
+class MeasureRepeat(Leaf):
+    value: str = "%"
+
+
+@dataclass
 class TimeSignature(BaseNode):
     numerator: int = 4
     denominator: int = 4
@@ -128,19 +133,26 @@ class TimeSignature(BaseNode):
 
 @dataclass
 class Bar(BaseNode):
-    chords: List[Chord]
+    chords: Optional[List[Chord]] = None
     chord_amount: int = field(init=False)
+    measure_repeat: bool = False
     timesignature: TimeSignature = field(
         default_factory=TimeSignature
     )  # TODO: figure out time signature logic
 
     def __post_init__(self):
-        self.chord_amount = len(self.chords)
+        if self.chords:
+            self.chord_amount = len(self.chords)
+        else:
+            self.chord_amount = 0
 
     def to_list(
         self,
     ):  # TODO: should implement timesignature? does not for now
-        return [str(chord) for chord in self.chords]
+        if self.measure_repeat:
+            return [str(MeasureRepeat())]
+        else:
+            return [str(chord) for chord in self.chords]
 
 
 @dataclass

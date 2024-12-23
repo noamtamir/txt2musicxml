@@ -15,8 +15,8 @@ def serializedATN():
     return [
         4,
         1,
-        8,
-        78,
+        9,
+        87,
         2,
         0,
         7,
@@ -122,6 +122,27 @@ def serializedATN():
         2,
         1,
         2,
+        3,
+        2,
+        49,
+        8,
+        2,
+        1,
+        2,
+        1,
+        2,
+        3,
+        2,
+        53,
+        8,
+        2,
+        3,
+        2,
+        55,
+        8,
+        2,
+        1,
+        2,
         1,
         2,
         1,
@@ -148,27 +169,27 @@ def serializedATN():
         3,
         3,
         3,
-        61,
-        8,
-        3,
-        1,
-        4,
-        1,
-        4,
-        3,
-        4,
-        65,
-        8,
-        4,
-        1,
-        5,
-        1,
-        5,
-        1,
-        5,
-        3,
-        5,
         70,
+        8,
+        3,
+        1,
+        4,
+        1,
+        4,
+        3,
+        4,
+        74,
+        8,
+        4,
+        1,
+        5,
+        1,
+        5,
+        1,
+        5,
+        3,
+        5,
+        79,
         8,
         5,
         1,
@@ -199,7 +220,7 @@ def serializedATN():
         16,
         0,
         0,
-        79,
+        91,
         0,
         19,
         1,
@@ -213,47 +234,47 @@ def serializedATN():
         0,
         0,
         4,
-        34,
+        54,
         1,
         0,
         0,
         0,
         6,
-        60,
+        69,
         1,
         0,
         0,
         0,
         8,
-        62,
-        1,
-        0,
-        0,
-        0,
-        10,
-        66,
-        1,
-        0,
-        0,
-        0,
-        12,
         71,
         1,
         0,
         0,
         0,
-        14,
-        73,
-        1,
-        0,
-        0,
-        0,
-        16,
+        10,
         75,
         1,
         0,
         0,
         0,
+        12,
+        80,
+        1,
+        0,
+        0,
+        0,
+        14,
+        82,
+        1,
+        0,
+        0,
+        0,
+        16,
+        84,
+        1,
+        0,
+        0,
+        0,
         18,
         20,
         3,
@@ -305,7 +326,7 @@ def serializedATN():
         25,
         27,
         5,
-        7,
+        8,
         0,
         0,
         26,
@@ -365,7 +386,7 @@ def serializedATN():
         33,
         35,
         5,
-        8,
+        9,
         0,
         0,
         34,
@@ -395,7 +416,7 @@ def serializedATN():
         37,
         38,
         5,
-        8,
+        9,
         0,
         0,
         38,
@@ -443,7 +464,7 @@ def serializedATN():
         44,
         46,
         5,
-        8,
+        9,
         0,
         0,
         45,
@@ -459,231 +480,306 @@ def serializedATN():
         0,
         0,
         46,
-        47,
+        55,
         1,
         0,
         0,
         0,
         47,
-        48,
+        49,
         5,
-        6,
+        9,
         0,
         0,
         48,
-        5,
+        47,
+        1,
+        0,
+        0,
+        0,
+        48,
+        49,
         1,
         0,
         0,
         0,
         49,
-        61,
-        3,
-        8,
-        4,
+        50,
+        1,
+        0,
+        0,
         0,
         50,
-        51,
-        3,
-        8,
-        4,
+        52,
+        5,
+        1,
+        0,
         0,
         51,
-        52,
-        3,
-        16,
-        8,
+        53,
+        5,
+        9,
+        0,
         0,
         52,
-        61,
+        51,
+        1,
+        0,
+        0,
+        0,
+        52,
+        53,
         1,
         0,
         0,
         0,
         53,
-        54,
-        3,
-        8,
-        4,
+        55,
+        1,
+        0,
+        0,
         0,
         54,
-        55,
-        3,
-        10,
-        5,
+        34,
+        1,
+        0,
+        0,
+        0,
+        54,
+        48,
+        1,
+        0,
+        0,
         0,
         55,
-        61,
+        56,
         1,
         0,
         0,
         0,
         56,
         57,
-        3,
-        8,
-        4,
-        0,
-        57,
-        58,
-        3,
-        16,
-        8,
-        0,
-        58,
-        59,
-        3,
-        10,
         5,
-        0,
-        59,
-        61,
-        1,
-        0,
-        0,
-        0,
-        60,
-        49,
-        1,
-        0,
-        0,
-        0,
-        60,
-        50,
-        1,
-        0,
-        0,
-        0,
-        60,
-        53,
-        1,
-        0,
-        0,
-        0,
-        60,
-        56,
-        1,
-        0,
-        0,
-        0,
-        61,
         7,
+        0,
+        0,
+        57,
+        5,
+        1,
+        0,
+        0,
+        0,
+        58,
+        70,
+        3,
+        8,
+        4,
+        0,
+        59,
+        60,
+        3,
+        8,
+        4,
+        0,
+        60,
+        61,
+        3,
+        16,
+        8,
+        0,
+        61,
+        70,
         1,
         0,
         0,
         0,
         62,
-        64,
+        63,
         3,
-        12,
-        6,
+        8,
+        4,
         0,
         63,
-        65,
+        64,
         3,
-        14,
-        7,
+        10,
+        5,
         0,
         64,
-        63,
-        1,
-        0,
-        0,
-        0,
-        64,
-        65,
+        70,
         1,
         0,
         0,
         0,
         65,
-        9,
-        1,
-        0,
-        0,
+        66,
+        3,
+        8,
+        4,
         0,
         66,
         67,
-        5,
-        4,
-        0,
+        3,
+        16,
+        8,
         0,
         67,
-        69,
+        68,
         3,
-        12,
-        6,
+        10,
+        5,
         0,
         68,
         70,
-        3,
-        14,
+        1,
+        0,
+        0,
+        0,
+        69,
+        58,
+        1,
+        0,
+        0,
+        0,
+        69,
+        59,
+        1,
+        0,
+        0,
+        0,
+        69,
+        62,
+        1,
+        0,
+        0,
+        0,
+        69,
+        65,
+        1,
+        0,
+        0,
+        0,
+        70,
         7,
-        0,
-        69,
-        68,
-        1,
-        0,
-        0,
-        0,
-        69,
-        70,
-        1,
-        0,
-        0,
-        0,
-        70,
-        11,
         1,
         0,
         0,
         0,
         71,
+        73,
+        3,
+        12,
+        6,
+        0,
         72,
-        5,
+        74,
+        3,
+        14,
+        7,
+        0,
+        73,
+        72,
         1,
         0,
         0,
-        72,
+        0,
+        73,
+        74,
+        1,
+        0,
+        0,
+        0,
+        74,
+        9,
+        1,
+        0,
+        0,
+        0,
+        75,
+        76,
+        5,
+        5,
+        0,
+        0,
+        76,
+        78,
+        3,
+        12,
+        6,
+        0,
+        77,
+        79,
+        3,
+        14,
+        7,
+        0,
+        78,
+        77,
+        1,
+        0,
+        0,
+        0,
+        78,
+        79,
+        1,
+        0,
+        0,
+        0,
+        79,
+        11,
+        1,
+        0,
+        0,
+        0,
+        80,
+        81,
+        5,
+        2,
+        0,
+        0,
+        81,
         13,
         1,
         0,
         0,
         0,
-        73,
-        74,
+        82,
+        83,
         5,
-        2,
+        3,
         0,
         0,
-        74,
+        83,
         15,
         1,
         0,
         0,
         0,
-        75,
-        76,
+        84,
+        85,
         5,
-        3,
+        4,
         0,
         0,
-        76,
+        85,
         17,
         1,
         0,
         0,
         0,
-        9,
+        12,
         21,
         26,
         31,
         34,
         41,
         45,
-        60,
-        64,
+        48,
+        52,
+        54,
         69,
+        73,
+        78,
     ]
 
 
@@ -699,6 +795,7 @@ class ChordsParser(Parser):
 
     literalNames = [
         "<INVALID>",
+        "'%'",
         "<INVALID>",
         "<INVALID>",
         "<INVALID>",
@@ -709,6 +806,7 @@ class ChordsParser(Parser):
 
     symbolicNames = [
         "<INVALID>",
+        "MEASURE_REPEAT",
         "NOTE",
         "ALTERATION",
         "SUFFIX",
@@ -742,14 +840,15 @@ class ChordsParser(Parser):
     ]
 
     EOF = Token.EOF
-    NOTE = 1
-    ALTERATION = 2
-    SUFFIX = 3
-    SLASH = 4
-    COLON = 5
-    BARLINE = 6
-    NEWLINE = 7
-    WHITESPACE = 8
+    MEASURE_REPEAT = 1
+    NOTE = 2
+    ALTERATION = 3
+    SUFFIX = 4
+    SLASH = 5
+    COLON = 6
+    BARLINE = 7
+    NEWLINE = 8
+    WHITESPACE = 9
 
     def __init__(self, input: TokenStream, output: TextIO = sys.stdout):
         super().__init__(input, output)
@@ -813,7 +912,7 @@ class ChordsParser(Parser):
                 self.state = 21
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3F) == 0 and ((1 << _la) & 386) != 0)):
+                if not ((((_la) & ~0x3F) == 0 and ((1 << _la) & 774) != 0)):
                     break
 
             self.state = 23
@@ -874,7 +973,7 @@ class ChordsParser(Parser):
             self.state = 26
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la == 7:
+            if _la == 8:
                 self.state = 25
                 self.match(ChordsParser.NEWLINE)
 
@@ -912,14 +1011,17 @@ class ChordsParser(Parser):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def BARLINE(self):
+            return self.getToken(ChordsParser.BARLINE, 0)
+
         def chord(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ChordsParser.ChordContext)
             else:
                 return self.getTypedRuleContext(ChordsParser.ChordContext, i)
 
-        def BARLINE(self):
-            return self.getToken(ChordsParser.BARLINE, 0)
+        def MEASURE_REPEAT(self):
+            return self.getToken(ChordsParser.MEASURE_REPEAT, 0)
 
         def WHITESPACE(self, i: int = None):
             if i is None:
@@ -951,36 +1053,63 @@ class ChordsParser(Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 34
+            self.state = 54
             self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if _la == 8:
-                self.state = 33
-                self.match(ChordsParser.WHITESPACE)
-
-            self.state = 36
-            self.chord()
-            self.state = 41
-            self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input, 4, self._ctx)
-            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
-                if _alt == 1:
-                    self.state = 37
+            la_ = self._interp.adaptivePredict(self._input, 8, self._ctx)
+            if la_ == 1:
+                self.state = 34
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if _la == 9:
+                    self.state = 33
                     self.match(ChordsParser.WHITESPACE)
-                    self.state = 38
-                    self.chord()
-                self.state = 43
+
+                self.state = 36
+                self.chord()
+                self.state = 41
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input, 4, self._ctx)
+                while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                    if _alt == 1:
+                        self.state = 37
+                        self.match(ChordsParser.WHITESPACE)
+                        self.state = 38
+                        self.chord()
+                    self.state = 43
+                    self._errHandler.sync(self)
+                    _alt = self._interp.adaptivePredict(
+                        self._input, 4, self._ctx
+                    )
 
-            self.state = 45
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if _la == 8:
-                self.state = 44
-                self.match(ChordsParser.WHITESPACE)
+                self.state = 45
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if _la == 9:
+                    self.state = 44
+                    self.match(ChordsParser.WHITESPACE)
 
-            self.state = 47
+                pass
+
+            elif la_ == 2:
+                self.state = 48
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if _la == 9:
+                    self.state = 47
+                    self.match(ChordsParser.WHITESPACE)
+
+                self.state = 50
+                self.match(ChordsParser.MEASURE_REPEAT)
+                self.state = 52
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if _la == 9:
+                    self.state = 51
+                    self.match(ChordsParser.WHITESPACE)
+
+                pass
+
+            self.state = 56
             self.match(ChordsParser.BARLINE)
         except RecognitionException as re:
             localctx.exception = re
@@ -1033,38 +1162,38 @@ class ChordsParser(Parser):
         localctx = ChordsParser.ChordContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_chord)
         try:
-            self.state = 60
+            self.state = 69
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input, 6, self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 9, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 49
+                self.state = 58
                 self.root()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 50
+                self.state = 59
                 self.root()
-                self.state = 51
+                self.state = 60
                 self.suffix()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 53
+                self.state = 62
                 self.root()
-                self.state = 54
+                self.state = 63
                 self.bass()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 56
+                self.state = 65
                 self.root()
-                self.state = 57
+                self.state = 66
                 self.suffix()
-                self.state = 58
+                self.state = 67
                 self.bass()
                 pass
 
@@ -1118,13 +1247,13 @@ class ChordsParser(Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 62
+            self.state = 71
             self.note()
-            self.state = 64
+            self.state = 73
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la == 2:
-                self.state = 63
+            if _la == 3:
+                self.state = 72
                 self.alteration()
 
         except RecognitionException as re:
@@ -1180,15 +1309,15 @@ class ChordsParser(Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 66
+            self.state = 75
             self.match(ChordsParser.SLASH)
-            self.state = 67
+            self.state = 76
             self.note()
-            self.state = 69
+            self.state = 78
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la == 2:
-                self.state = 68
+            if _la == 3:
+                self.state = 77
                 self.alteration()
 
         except RecognitionException as re:
@@ -1237,7 +1366,7 @@ class ChordsParser(Parser):
         self.enterRule(localctx, 12, self.RULE_note)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 71
+            self.state = 80
             self.match(ChordsParser.NOTE)
         except RecognitionException as re:
             localctx.exception = re
@@ -1285,7 +1414,7 @@ class ChordsParser(Parser):
         self.enterRule(localctx, 14, self.RULE_alteration)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 73
+            self.state = 82
             self.match(ChordsParser.ALTERATION)
         except RecognitionException as re:
             localctx.exception = re
@@ -1333,7 +1462,7 @@ class ChordsParser(Parser):
         self.enterRule(localctx, 16, self.RULE_suffix)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 75
+            self.state = 84
             self.match(ChordsParser.SUFFIX)
         except RecognitionException as re:
             localctx.exception = re
