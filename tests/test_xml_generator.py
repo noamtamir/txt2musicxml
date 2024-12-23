@@ -1,6 +1,9 @@
 from tests.mock_sheet import mock_sheet
-from txt2musicxml.xml_generator import (SheetXmlGenerator, is_first,
-                                        is_power_of_2)
+from txt2musicxml.xml_generator import (
+    SheetXmlGenerator,
+    is_first,
+    is_power_of_2,
+)
 
 
 # TODO: add more tests to generator

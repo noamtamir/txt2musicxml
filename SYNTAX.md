@@ -2,7 +2,7 @@
 
 ## Quick start example
 ```crd
-Bb/Ab | Bb/Ab |
+Bb/Ab | % |
 Bb/Ab | Gm6 Cm7b5/Gb |
 Bbmaj7/F E9b5 | Ebmaj9 Ab9 |
 Bbmaj7 Bb7 | C7/E Ebm6 |
@@ -24,10 +24,11 @@ Gbmaj7#5/Bb
 - **Bass**: Same as note, but must have a slash (/) before it and must come after a root (+ optional alteration and/or suffix ). E.g `/G`
 
 ## Bar
-A bar consists of multiple chords seperated by whitespace, following a barline.
+A bar consists of multiple chords seperated by whitespace, following a barline. It could also be a repeat bar, also followed by a bar line.
 - Barline: `|`
+- Repate Bar: `%`
 ```
-Gm6 Cm7b5/Gb |
+Gm6 Cm7b5/Gb | % |
 ```
 
 ## Line
