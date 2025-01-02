@@ -8,5 +8,28 @@
   "mypy-type-checker.ignorePatterns": [
     "txt2musicxml/grammer"
   ],
-  "makefile.configureOnOpen": false
+"makefile.configureOnOpen": false,
+"cSpell.words": [
+    "antlr",
+    "Bbmaj",
+    "Cmaj",
+    "Ebmaj",
+    "Gmaj",
+    "mscore",
+    "musicxml",
+    "notehead",
+    "timesignature"
+],
+"cSpell.ignoreWords": [
+    "Antônio",
+    "Dlanguage",
+    "Jobim",
+    "Março",
+    "TMPSUFFIX",
+    "abdgijmosuø",
+    "admosø",
+    "grun",
+    "javac",
+    "Águas"
+]
 }

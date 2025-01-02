@@ -7,7 +7,7 @@
       "request": "launch",
       "program": "${workspaceFolder}/txt2musicxml/main.py",
       "console": "integratedTerminal",
-      "args": ["<", "examples/autumn_leaves.crd"],
+      "args": ["<", "examples/autumn leaves.crd"],
       "envFile": "${workspaceFolder}/.env"
     }
   ]

@@ -1,6 +1,8 @@
 from dataclasses import dataclass, field
 from typing import List, Optional
 
+from txt2musicxml.enums import Barline
+
 
 class BaseNode:
     pass
@@ -136,6 +138,7 @@ class Bar(BaseNode):
     chords: Optional[List[Chord]] = None
     chord_amount: int = field(init=False)
     measure_repeat: bool = False
+    right_barline: Barline = Barline.REGULAR
     timesignature: TimeSignature = field(
         default_factory=TimeSignature
     )  # TODO: figure out time signature logic

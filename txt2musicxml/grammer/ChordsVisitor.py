@@ -47,5 +47,9 @@ class ChordsVisitor(ParseTreeVisitor):
     def visitSuffix(self, ctx: ChordsParser.SuffixContext):
         return self.visitChildren(ctx)
 
+    # Visit a parse tree produced by ChordsParser#right_barlines.
+    def visitRight_barlines(self, ctx: ChordsParser.Right_barlinesContext):
+        return self.visitChildren(ctx)
+
 
 del ChordsParser

@@ -2,6 +2,7 @@ from typing import Union
 
 from antlr4 import ParserRuleContext
 
+from txt2musicxml.enums import Barline, get_barline_from_text
 from txt2musicxml.grammer.ChordsParser import ChordsParser
 from txt2musicxml.grammer.ChordsVisitor import ChordsVisitor
 from txt2musicxml.models import (
@@ -38,12 +39,20 @@ class ConcreteChordsVisitor(ChordsVisitor):
     def visitBar(self, ctx: ChordsParser.BarContext) -> Bar:
         chords_ctx = ctx.chord()
         measure_repeat_ctx = ctx.MEASURE_REPEAT()
+        right_barlines_ctx = ctx.right_barlines()
+        right_barline = self._get_right_barline_type(right_barlines_ctx)
         if chords_ctx:
             chords = [self.visit(chord) for chord in chords_ctx]
-            return Bar(chords=chords)
+            return Bar(chords=chords, right_barline=right_barline)
         elif measure_repeat_ctx:
-            return Bar(measure_repeat=True)
+            return Bar(measure_repeat=True, right_barline=right_barline)
         return Bar()  # satisfies mypy, will never be called
+
+    def _get_right_barline_type(
+        self, ctx: ChordsParser.Right_barlinesContext
+    ) -> Barline:
+        barline_text = ctx.getText()
+        return get_barline_from_text(barline_text)
 
     # Visit a parse tree produced by ChordsParser#chord.
     def visitChord(self, ctx: ChordsParser.ChordContext) -> Chord:

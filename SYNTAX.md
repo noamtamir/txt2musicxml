@@ -25,21 +25,21 @@ Gbmaj7#5/Bb
 
 ## Bar
 A bar consists of multiple chords seperated by whitespace, following a barline. It could also be a repeat bar, also followed by a bar line.
-- Barline: `|`
+- Barline: `|`, `||`, `:||`
 - Repate Bar: `%`
 ```
 Gm6 Cm7b5/Gb | % |
 ```
 
 ## Line
-A line consists of multiple bars seperated by barlines (`|`), and ending with a barline.
-- Barline: `|`
+A line consists of multiple bars seperated by barlines, and ending with a barline.
+- Barline: `|`, `||`, `:||`
 ```
-Bb/Ab | Gm6 Cm7b5/Gb |
+Bb/Ab | Gm6 Cm7b5/Gb ||
 ```
 
 ## Sheet
-A sheet consists of multiple lines seperated by a newline (`\n`). Example at the top (quick start section).
+A sheet consists of multiple lines separated by a newline (`\n`). Example at the top (quick start section).
 
 
 ## Supported suffixes
