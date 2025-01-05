@@ -21,7 +21,7 @@ Gbmaj7#5/Bb
 - **Root**: A name of a note. An uppercase letter between A-G. Required for any chord. E.g. `C`
 - **Alteration**: An accidental (sharp/flat), may optional come after a note (root/bass). E.g. `#`, `b`, `##` `bb`
 - **Suffix**: Anything related to the type of the chord and/or tensions. E.g. `m`, `maj7`, `7#9`, `b9b13`, `9,13`
-- **Bass**: Same as note, but must have a slash (/) before it and must come after a root (+ optional alteration and/or suffix ). E.g `/G`
+- **Bass**: Same as note, but must have a slash (/) before it and must come after a root (+ optional alteration and/or suffix ). No whitespace is allowed before or after the slash. E.g `/G`
 
 ## Bar
 A bar consists of multiple chords seperated by whitespace, following a barline. It could also be a repeat bar, also followed by a bar line.
@@ -30,6 +30,25 @@ A bar consists of multiple chords seperated by whitespace, following a barline. 
 ```
 Gm6 Cm7b5/Gb | % |
 ```
+
+## Rhythm
+Chords occupy an equal of time in a bar if possible to fit into simple rhythms such as whole/half/quarter notes. If not possible, the later chords' rhythm is split to make them shorter. Examples:
+```
+Cmaj || -> 1 whole note
+Cmaj7 Fmaj7 || -> 2 half notes
+Cmaj7 G/B Am7 || -> 1 half note and 2 quarter notes
+Cmaj7 G/B Am7 Am/G || -> 4 quarter notes
+Cmaj7 G/B C/Bb Am7 Am/G || -> 3 quarter notes and 2 eighth notes
+Cmaj7 G/B Am7 Am/G Fmaj7 C/E || -> 2 quarter notes and 4 eighth notes
+```
+### Slashes
+To indicate rhythm more precisely you can use slashes `/`. A slash is a placeholder for a chord in the rhythm, without an acutal chord change. Make sure to have a space before and after, to avoid confusion with bass notes (i.e. `C / B |` is not the same as `C/B |`). Examples:
+```
+Cmaj7 / / Fmaj7 || -> The first chord has a duration of3 quraters, and the last just 1 quarter
+Cmaj7 / Dm7 G7 || -> 1 half note and 2 quarter notes
+Cmaj7 Dm7 C/E / || -> 2 quarter notes and 1 half note\
+```
+
 
 ## Line
 A line consists of multiple bars seperated by barlines, and ending with a barline.

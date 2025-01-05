@@ -3,8 +3,10 @@ grammar Chords;
 sheet: line+ EOF;
 line: NEWLINE? bar+;
 bar:
-	((WHITESPACE? chord (WHITESPACE chord)* WHITESPACE?) | (WHITESPACE? MEASURE_REPEAT WHITESPACE?)) right_barlines; // WHITESPACE? timeSignature? 
+	((WHITESPACE? chord_or_slash (WHITESPACE chord_or_slash)* WHITESPACE?) | (WHITESPACE? MEASURE_REPEAT WHITESPACE?)) right_barlines; // WHITESPACE? timeSignature? 
+chord_or_slash: chord | slash;
 chord: root | root suffix | root bass | root suffix bass;
+slash: SLASH;
 root: note alteration?;
 bass: SLASH note alteration?;
 note: NOTE;

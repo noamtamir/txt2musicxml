@@ -17,6 +17,7 @@ from txt2musicxml.models import (
     RootAlteration,
     RootNote,
     Sheet,
+    Slash,
     Suffix,
 )
 
@@ -37,10 +38,9 @@ class ConcreteChordsVisitor(ChordsVisitor):
 
     # Visit a parse tree produced by ChordsParser#bar.
     def visitBar(self, ctx: ChordsParser.BarContext) -> Bar:
-        chords_ctx = ctx.chord()
+        chords_ctx = ctx.chord_or_slash()
         measure_repeat_ctx = ctx.MEASURE_REPEAT()
-        right_barlines_ctx = ctx.right_barlines()
-        right_barline = self._get_right_barline_type(right_barlines_ctx)
+        right_barline = self.visit(ctx.right_barlines())
         if chords_ctx:
             chords = [self.visit(chord) for chord in chords_ctx]
             return Bar(chords=chords, right_barline=right_barline)
@@ -48,7 +48,7 @@ class ConcreteChordsVisitor(ChordsVisitor):
             return Bar(measure_repeat=True, right_barline=right_barline)
         return Bar()  # satisfies mypy, will never be called
 
-    def _get_right_barline_type(
+    def visitRight_barlines(
         self, ctx: ChordsParser.Right_barlinesContext
     ) -> Barline:
         barline_text = ctx.getText()
@@ -63,6 +63,9 @@ class ConcreteChordsVisitor(ChordsVisitor):
         bass_ctx = ctx.bass()
         bass = self.visit(bass_ctx) if bass_ctx else None
         return Chord(root, suffix, bass)  # type: ignore
+
+    def visitSlash(self, ctx: ChordsParser.SlashContext):
+        return Slash()
 
     # Visit a parse tree produced by ChordsParser#root.
     def visitRoot(self, ctx: ChordsParser.RootContext) -> Root:

@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import List, Optional
+from typing import List, Optional, Union
 
 from txt2musicxml.enums import Barline
 
@@ -123,8 +123,19 @@ class Chord(BaseNode):
 
 
 @dataclass
+class Slash(Leaf):
+    value: str = "/"
+
+    def __str__(self):
+        return self.value
+
+
+@dataclass
 class MeasureRepeat(Leaf):
     value: str = "%"
+
+    def __str__(self):
+        return self.value
 
 
 @dataclass
@@ -135,7 +146,7 @@ class TimeSignature(BaseNode):
 
 @dataclass
 class Bar(BaseNode):
-    chords: Optional[List[Chord]] = None
+    chords: Optional[List[Union[Chord, Slash]]] = None
     chord_amount: int = field(init=False)
     measure_repeat: bool = False
     right_barline: Barline = Barline.REGULAR

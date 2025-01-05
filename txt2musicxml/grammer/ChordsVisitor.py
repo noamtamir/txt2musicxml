@@ -23,8 +23,16 @@ class ChordsVisitor(ParseTreeVisitor):
     def visitBar(self, ctx: ChordsParser.BarContext):
         return self.visitChildren(ctx)
 
+    # Visit a parse tree produced by ChordsParser#chord_or_slash.
+    def visitChord_or_slash(self, ctx: ChordsParser.Chord_or_slashContext):
+        return self.visitChildren(ctx)
+
     # Visit a parse tree produced by ChordsParser#chord.
     def visitChord(self, ctx: ChordsParser.ChordContext):
+        return self.visitChildren(ctx)
+
+    # Visit a parse tree produced by ChordsParser#slash.
+    def visitSlash(self, ctx: ChordsParser.SlashContext):
         return self.visitChildren(ctx)
 
     # Visit a parse tree produced by ChordsParser#root.

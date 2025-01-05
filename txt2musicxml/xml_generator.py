@@ -30,6 +30,7 @@ from txt2musicxml.models import (
     RootAlteration,
     RootNote,
     Sheet,
+    Slash,
     Suffix,
 )
 
@@ -183,22 +184,25 @@ class SuffixXmlGenerator:
 
 @dataclass
 class ChordXmlGenerator:
-    ast_node: Chord
+    ast_node: Union[Chord, Slash]
     duration: int
     quarter_note_divisions: int
 
     def generate_xml(self) -> list[Element]:
-        harmony_element = Element("harmony")
-        harmony_element.append(
-            RootXmlGenerator(self.ast_node.root).generate_xml()
-        )
-        harmony_element.extend(
-            SuffixXmlGenerator(self.ast_node.suffix).generate_xml()
-        )
-        if self.ast_node.bass:
+        elements: list[Element] = []
+        if isinstance(self.ast_node, Chord):
+            harmony_element = Element("harmony")
             harmony_element.append(
-                BassXmlGenerator(self.ast_node.bass).generate_xml()
+                RootXmlGenerator(self.ast_node.root).generate_xml()
             )
+            harmony_element.extend(
+                SuffixXmlGenerator(self.ast_node.suffix).generate_xml()
+            )
+            if self.ast_node.bass:
+                harmony_element.append(
+                    BassXmlGenerator(self.ast_node.bass).generate_xml()
+                )
+            elements.append(harmony_element)
 
         note_element = Element("note")
         pitch_element = SubElement(note_element, "pitch")
@@ -222,6 +226,8 @@ class ChordXmlGenerator:
             stem_element.text = NO_STEM
         notehead_element = SubElement(note_element, "notehead")
         notehead_element.text = SLASH_NOTEHEAD
+        elements.append(note_element)
+
         extra_slashes: list[Element] = []
         if (
             duration_per_divisions > 1
@@ -229,7 +235,8 @@ class ChordXmlGenerator:
             amount_of_slashes = int(duration_per_divisions - 1)
             for _ in range(amount_of_slashes):
                 extra_slashes.append(self._add_slash())
-        return [harmony_element, note_element] + extra_slashes
+        elements.extend(extra_slashes)
+        return elements
 
     def _add_slash(self):
         note_element = Element("note")

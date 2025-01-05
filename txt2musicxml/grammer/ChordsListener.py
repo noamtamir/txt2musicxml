@@ -34,12 +34,28 @@ class ChordsListener(ParseTreeListener):
     def exitBar(self, ctx: ChordsParser.BarContext):
         pass
 
+    # Enter a parse tree produced by ChordsParser#chord_or_slash.
+    def enterChord_or_slash(self, ctx: ChordsParser.Chord_or_slashContext):
+        pass
+
+    # Exit a parse tree produced by ChordsParser#chord_or_slash.
+    def exitChord_or_slash(self, ctx: ChordsParser.Chord_or_slashContext):
+        pass
+
     # Enter a parse tree produced by ChordsParser#chord.
     def enterChord(self, ctx: ChordsParser.ChordContext):
         pass
 
     # Exit a parse tree produced by ChordsParser#chord.
     def exitChord(self, ctx: ChordsParser.ChordContext):
+        pass
+
+    # Enter a parse tree produced by ChordsParser#slash.
+    def enterSlash(self, ctx: ChordsParser.SlashContext):
+        pass
+
+    # Exit a parse tree produced by ChordsParser#slash.
+    def exitSlash(self, ctx: ChordsParser.SlashContext):
         pass
 
     # Enter a parse tree produced by ChordsParser#root.
