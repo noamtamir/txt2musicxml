@@ -29,12 +29,13 @@ class pipe(Generic[T]):
 def main():
     if sys.stdin.isatty():
         exit("Missing input")
+    input_ = sys.stdin.read().rstrip().lstrip()
     (
         pipe(
             (
                 pipe(
                     (
-                        pipe(sys.stdin.read())
+                        pipe(input_)
                         >> InputStream
                         >> ChordsLexer
                         >> CommonTokenStream
