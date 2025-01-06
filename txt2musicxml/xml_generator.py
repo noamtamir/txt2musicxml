@@ -214,7 +214,9 @@ class ChordXmlGenerator:
         if (
             duration_per_divisions > 1
         ):  # add slashes instead of full note duration
-            self.duration = self.quarter_note_divisions  # quarter note
+            self.duration = (
+                self.quarter_note_divisions
+            )  # quarter note. TODO: fix this to allow /. dotted slashes
         duration_element = SubElement(note_element, "duration")
         duration_element.text = str(self.duration)
         type_element = SubElement(note_element, "type")
@@ -232,6 +234,8 @@ class ChordXmlGenerator:
         if (
             duration_per_divisions > 1
         ):  # add slashes instead of full note duration
+            # round down to quarter notes.
+            # TODO: fix this to allow 7/8 and other odd timesignatures
             amount_of_slashes = int(duration_per_divisions - 1)
             for _ in range(amount_of_slashes):
                 extra_slashes.append(self._add_slash())
@@ -300,16 +304,16 @@ class BarXmlGenerator:
             fifths_element.text = "0"
             mode_element = SubElement(key_element, "mode")
             mode_element.text = "major"
-            time_element = SubElement(attributes_element, "time")
-            beats_element = SubElement(time_element, "beats")
-            beats_element.text = str(self.ast_node.timesignature.numerator)
-            beat_type_element = SubElement(time_element, "beat-type")
-            beat_type_element.text = str(self.ast_node.timesignature.numerator)
+            time_element = self._generate_timesignature_element()
+            attributes_element.append(time_element)
             clef_element = SubElement(attributes_element, "clef")
             sign_element = SubElement(clef_element, "sign")
             sign_element.text = "G"
             line_element = SubElement(clef_element, "line")
             line_element.text = "2"
+        if self.ast_node.timesignature.should_print:
+            time_element = self._generate_timesignature_element()
+            attributes_element.append(time_element)
         if self.ast_node.chords:
             chord_elements: list[Element] = []
             for duration_and_chord in list(
@@ -357,6 +361,14 @@ class BarXmlGenerator:
             )  # only support backward repeat for now
             barline_element.append(repeat)
         return barline_element
+
+    def _generate_timesignature_element(self) -> Element:
+        time_element = Element("time")
+        beats_element = SubElement(time_element, "beats")
+        beats_element.text = str(self.ast_node.timesignature.numerator)
+        beat_type_element = SubElement(time_element, "beat-type")
+        beat_type_element.text = str(self.ast_node.timesignature.denominator)
+        return time_element
 
     def _validate_timesignature_denominator(self):
         # TODO: handle error

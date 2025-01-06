@@ -24,9 +24,9 @@ Gbmaj7#5/Bb
 - **Bass**: Same as note, but must have a slash (/) before it and must come after a root (+ optional alteration and/or suffix ). No whitespace is allowed before or after the slash. E.g `/G`
 
 ## Bar
-A bar consists of multiple chords seperated by whitespace, following a barline. It could also be a repeat bar, also followed by a bar line.
+A bar consists of multiple chords seperated by whitespace, following a barline. It could also be a repeat bar, also followed by a bar line. Optionally, a time signature can be added at the beginning.
 - Barline: `|`, `||`, `:||`
-- Repate Bar: `%`
+- Repeat Bar: `%`
 ```
 Gm6 Cm7b5/Gb | % |
 ```
@@ -49,12 +49,22 @@ Cmaj7 / Dm7 G7 || -> 1 half note and 2 quarter notes
 Cmaj7 Dm7 C/E / || -> 2 quarter notes and 1 half note\
 ```
 
+### Time signature
+Can be added at the beginning of a bar with with the following syntax: `NUMBER/NUMBER`. Examples:
+```
+3/4 C | F | G | 4/4 Am G | F | 5/8 Dm | E / / E7 / ||
+```
+
+
+### Known bugs
+1. The current algorithm attempts to distribute chords equally in a bar, and if it can't it splits the duration of the later chords of the bar. This is a decent default for most use cases of pop/rock/jazz, imho. This doesn't work perfectly in all cases especially in odd time signatures (i.e. 5/8, 7/8), or mismatching number of chords in bar (i.e. 2 chords in a 3/8 bar). To avoid problems, I suggest to be explicit about the rhythm using slashes (`/`) in those cases (i.e. `Cmaj / G7`).
+2. x/2 or cut-time time signatures are not currently supported.
+
 
 ## Line
-A line consists of multiple bars seperated by barlines, and ending with a barline.
-- Barline: `|`, `||`, `:||`
+A line consists of multiple bars separated by barlines, and ending with a barline.
 ```
-Bb/Ab | Gm6 Cm7b5/Gb ||
+Bb/Ab | Gm6 Cm7b5/Gb |
 ```
 
 ## Sheet

@@ -142,6 +142,7 @@ class MeasureRepeat(Leaf):
 class TimeSignature(BaseNode):
     numerator: int = 4
     denominator: int = 4
+    should_print: bool = False
 
 
 @dataclass
@@ -150,9 +151,7 @@ class Bar(BaseNode):
     chord_amount: int = field(init=False)
     measure_repeat: bool = False
     right_barline: Barline = Barline.REGULAR
-    timesignature: TimeSignature = field(
-        default_factory=TimeSignature
-    )  # TODO: figure out time signature logic
+    timesignature: TimeSignature = field(default_factory=TimeSignature)
 
     def __post_init__(self):
         if self.chords:

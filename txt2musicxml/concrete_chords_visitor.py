@@ -1,3 +1,4 @@
+from dataclasses import replace
 from typing import Union
 
 from antlr4 import ParserRuleContext
@@ -19,10 +20,12 @@ from txt2musicxml.models import (
     Sheet,
     Slash,
     Suffix,
+    TimeSignature,
 )
 
 
 class ConcreteChordsVisitor(ChordsVisitor):
+    curr_time_signature: TimeSignature = TimeSignature()
 
     # Visit a parse tree produced by ChordsParser#sheet.
     def visitSheet(self, ctx: ChordsParser.SheetContext) -> Sheet:
@@ -38,12 +41,26 @@ class ConcreteChordsVisitor(ChordsVisitor):
 
     # Visit a parse tree produced by ChordsParser#bar.
     def visitBar(self, ctx: ChordsParser.BarContext) -> Bar:
+        time_signature_ctx = ctx.TIME_SIGNATURE()
+        time_signature = self.curr_time_signature
+        if time_signature_ctx:
+            numerator, denominator = time_signature_ctx.getText().split("/")
+            time_signature = TimeSignature(
+                int(numerator), int(denominator), should_print=True
+            )
+            self.curr_time_signature = replace(
+                time_signature, should_print=False
+            )
         chords_ctx = ctx.chord_or_slash()
         measure_repeat_ctx = ctx.MEASURE_REPEAT()
         right_barline = self.visit(ctx.right_barlines())
         if chords_ctx:
             chords = [self.visit(chord) for chord in chords_ctx]
-            return Bar(chords=chords, right_barline=right_barline)
+            return Bar(
+                chords=chords,
+                right_barline=right_barline,
+                timesignature=time_signature,
+            )
         elif measure_repeat_ctx:
             return Bar(measure_repeat=True, right_barline=right_barline)
         return Bar()  # satisfies mypy, will never be called
