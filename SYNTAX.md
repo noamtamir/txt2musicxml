@@ -2,6 +2,9 @@
 
 ## Quick start example
 ```crd
+Aguas de Marco - Elis Regina & Tom Jobim
+---
+
 Bb/Ab | % |
 Bb/Ab | Gm6 Cm7b5/Gb |
 Bbmaj7/F E9b5 | Ebmaj9 Ab9 |
@@ -24,11 +27,12 @@ Gbmaj7#5/Bb
 - **Bass**: Same as note, but must have a slash (/) before it and must come after a root (+ optional alteration and/or suffix ). No whitespace is allowed before or after the slash. E.g `/G`
 
 ## Bar
-A bar consists of multiple chords seperated by whitespace, following a barline. It could also be a repeat bar, also followed by a bar line. Optionally, a time signature can be added at the beginning.
+A bar consists of multiple chords separated by whitespace, following a barline. It could also be a repeat bar, also followed by a bar line. Optionally, a rehearsal mark or a time signature can be added at the beginning. If both are added, the order matters. Put the rehearsal mark first.
 - Barline: `|`, `||`, `:||`
 - Repeat Bar: `%`
+- Rehearsal mark: `[Any text]`
 ```
-Gm6 Cm7b5/Gb | % |
+[Verse] 6/8 Gm6 Cm7b5/Gb | % |
 ```
 
 ## Rhythm

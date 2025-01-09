@@ -235,7 +235,7 @@ class ChordXmlGenerator:
             duration_per_divisions > 1
         ):  # add slashes instead of full note duration
             # round down to quarter notes.
-            # TODO: fix this to allow 7/8 and other odd timesignatures
+            # TODO: fix this to allow 7/8 and other odd time signatures
             amount_of_slashes = int(duration_per_divisions - 1)
             for _ in range(amount_of_slashes):
                 extra_slashes.append(self._add_slash())
@@ -311,6 +311,9 @@ class BarXmlGenerator:
             sign_element.text = "G"
             line_element = SubElement(clef_element, "line")
             line_element.text = "2"
+        if self.ast_node.rehearsal_mark:
+            rehearsal_mark_element = self._generate_rehearsal_mark_element()
+            measure_element.append(rehearsal_mark_element)
         if self.ast_node.timesignature.should_print:
             time_element = self._generate_timesignature_element()
             attributes_element.append(time_element)
@@ -361,6 +364,19 @@ class BarXmlGenerator:
             )  # only support backward repeat for now
             barline_element.append(repeat)
         return barline_element
+
+    def _generate_rehearsal_mark_element(self) -> Element:
+        direction_el = Element("direction", {"placement": "above"})
+        direction_type_el = SubElement(direction_el, "direction-type")
+        attrs = {
+            "default-x": "-5",
+            "default-y": "40",
+            "font-size": "12",
+            "font-weight": "bold",
+        }
+        rehearsal = SubElement(direction_type_el, "rehearsal", attrs)
+        rehearsal.text = self.ast_node.rehearsal_mark
+        return direction_el
 
     def _generate_timesignature_element(self) -> Element:
         time_element = Element("time")

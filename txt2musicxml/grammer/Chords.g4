@@ -3,7 +3,7 @@ grammar Chords;
 sheet: line+ EOF;
 line: NEWLINE? bar+;
 bar:
-	((WHITESPACE? (TIME_SIGNATURE WHITESPACE)? chord_or_slash (WHITESPACE chord_or_slash)* WHITESPACE?) | (WHITESPACE? MEASURE_REPEAT WHITESPACE?)) right_barlines; // WHITESPACE? timeSignature? 
+	((WHITESPACE? (REHEARSAL WHITESPACE)? (TIME_SIGNATURE WHITESPACE)? chord_or_slash (WHITESPACE chord_or_slash)* WHITESPACE?) | (WHITESPACE? MEASURE_REPEAT WHITESPACE?)) right_barlines; // WHITESPACE? timeSignature? 
 chord_or_slash: chord | slash;
 chord: root | root suffix | root bass | root suffix bass;
 slash: SLASH;
@@ -14,6 +14,7 @@ alteration: ALTERATION;
 suffix: SUFFIX;
 right_barlines: BARLINE | DOUBLE_BARLINE | REPEAT_BARLINE;
 MEASURE_REPEAT: '%';
+REHEARSAL: '[' [A-Za-z0-9 ]+ ']' ;
 NOTE: [A-G];
 ALTERATION: 'b'+ | '#'+;
 TIME_SIGNATURE: [0-9]+ '/' [0-9]+;

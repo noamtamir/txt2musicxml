@@ -7,7 +7,7 @@
       "request": "launch",
       "program": "${workspaceFolder}/txt2musicxml/main.py",
       "console": "integratedTerminal",
-      "args": ["<", "examples/cant help falling in love - elvis presley.crd"],
+      "args": ["<", "examples/imagine - john lennon.crd"],
       "envFile": "${workspaceFolder}/.env"
     }
   ]

@@ -1,5 +1,5 @@
 from dataclasses import replace
-from typing import Union
+from typing import Optional, Union
 
 from antlr4 import ParserRuleContext
 
@@ -41,6 +41,12 @@ class ConcreteChordsVisitor(ChordsVisitor):
 
     # Visit a parse tree produced by ChordsParser#bar.
     def visitBar(self, ctx: ChordsParser.BarContext) -> Bar:
+        rehearsal_mark_ctx = ctx.REHEARSAL()
+        rehearsal_mark: Optional[str] = None
+        if rehearsal_mark_ctx:
+            rehearsal_mark = rehearsal_mark_ctx.getText()[
+                1:-1
+            ]  # strip brackets []
         time_signature_ctx = ctx.TIME_SIGNATURE()
         time_signature = self.curr_time_signature
         if time_signature_ctx:
@@ -60,6 +66,7 @@ class ConcreteChordsVisitor(ChordsVisitor):
                 chords=chords,
                 right_barline=right_barline,
                 timesignature=time_signature,
+                rehearsal_mark=rehearsal_mark,
             )
         elif measure_repeat_ctx:
             return Bar(measure_repeat=True, right_barline=right_barline)

@@ -152,6 +152,7 @@ class Bar(BaseNode):
     measure_repeat: bool = False
     right_barline: Barline = Barline.REGULAR
     timesignature: TimeSignature = field(default_factory=TimeSignature)
+    rehearsal_mark: Optional[str] = None
 
     def __post_init__(self):
         if self.chords:

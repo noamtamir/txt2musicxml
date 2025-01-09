@@ -18,8 +18,10 @@ txt2musicxml < path/to/Thriller.crd > path/to/Thriller.musicxml
 ```
 
 ## Syntax Example
-Aguas de Marco - Elis Regina & Tom Jobim:
 ```crd
+Aguas de Marco - Elis Regina & Tom Jobim
+---
+
 Bb/Ab | % |
 Bb/Ab | Gm6 Cm7b5/Gb |
 Bbmaj7/F E9b5 | Ebmaj9 Ab9 |
