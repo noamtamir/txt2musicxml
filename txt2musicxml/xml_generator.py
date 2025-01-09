@@ -468,6 +468,12 @@ class SheetXmlGenerator:
 
     def generate_xml(self) -> str:
         xml_root = self._init_musicxml_tree()
+
+        if self.ast_node.title:
+            xml_root.append(self._generate_title(self.ast_node.title))
+        if self.ast_node.author:
+            xml_root.append(self._generate_author(self.ast_node.author))
+
         part_element: Element = xml_root.find("part")  # type: ignore # noqa: E501
         bar_elements: list[Element] = []
         is_prev_repeat = False
@@ -485,6 +491,35 @@ class SheetXmlGenerator:
         filepath = Path(__file__).parent / MUSICXML_TEMPLATE_FILENAME
         tree = ElementTree.parse(filepath)
         return tree.getroot()
+
+    def _generate_title(self, title: str) -> Element:
+        attrs = {
+            "default-x": "600",
+            "default-y": "1611",
+            "justify": "center",
+            "valign": "top",
+            "font-size": "22",
+        }
+        return self._generate_credit("title", title, attrs)
+
+    def _generate_author(self, author: str) -> Element:
+        attrs = {
+            "default-x": "1114",
+            "default-y": "1511",
+            "justify": "right",
+            "valign": "bottom",
+        }
+        return self._generate_credit("composer", author, attrs)
+
+    def _generate_credit(
+        self, credit_type: str, credit_words: str, attrs: dict[str, str]
+    ) -> Element:
+        credit_el = Element("credit", {"page": "1"})
+        credit_type_el = SubElement(credit_el, "credit-type")
+        credit_type_el.text = credit_type
+        credit_words_el = SubElement(credit_el, "credit-words", attrs)
+        credit_words_el.text = credit_words
+        return credit_el
 
     @staticmethod
     def _to_string(xml_headers, xml_root):

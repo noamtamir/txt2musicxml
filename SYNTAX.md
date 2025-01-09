@@ -70,6 +70,14 @@ Bb/Ab | Gm6 Cm7b5/Gb |
 ## Sheet
 A sheet consists of multiple lines separated by a newline (`\n`). Example at the top (quick start section).
 
+## Title and Composer
+At the top of the file add the title and author seperated by a dash `-`. The title and author themselves cannot contain a dash. Separate the title and author from the rest of the sheet with 3 or more dashes (`---`) and a newline. Example:
+```
+Imagine - John Lennon
+---
+
+C // Cmaj7 | F |
+```
 
 ## Supported suffixes
 |     |     |     |     |     |     |

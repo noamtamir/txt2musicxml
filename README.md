@@ -49,17 +49,20 @@ For other development:
 - [Make](https://www.gnu.org/software/make/) - to help run useful commands
 
 ### Updating and Debugging
-Grammer is defined in `txt2musicxml/grammer/Chords.g4`.
+Grammer is defined in `txt2musicxml/grammer/Chords.g4` and `txt2musicxml/grammer/FrontMatter.g4`.
 To generate antlr python classes (Lexer, Parser, Visitor, Listener) from the grammer file, run:
 ```bash
 antlr4 -Dlanguage=Python3 txt2musicxml/grammer/Chords.g4 -visitor
+antlr4 -Dlanguage=Python3 txt2musicxml/grammer/FrontMatter.g4 -visitor
 ```
 Those classes are direct dependencies of the application, they must exist for the main program to run.
 
 To use the built-in antlr GUI and debug your grammer, first compile those java classes, and then run the gui:
 ```bash
 javac txt2musicxml/grammer/.antlr/Chords*.java
+javac txt2musicxml/grammer/.antlr/FrontMatter*.java
 cd txt2musicxml/grammer/.antlr && grun Chords sheet -gui
+# or: cd txt2musicxml/grammer/.antlr && grun FrontMatter front_matter -gui
 ```
 Then enter some text and hit `^D` (on mac) to indicate EOF, and see the parse tree get generated!
 > **_NOTE:_** `Chords` and `sheet` are names unique to the program (grammer name, root element), if you change the grammer file, the commands you run should change as well.

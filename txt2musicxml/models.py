@@ -179,6 +179,14 @@ class Line(BaseNode):
 @dataclass
 class Sheet(BaseNode):
     lines: List[Line]
+    title: Optional[str] = None
+    author: Optional[str] = None
 
     def to_list(self):
         return [line.to_list() for line in self.lines]
+
+
+@dataclass
+class FrontMatter:
+    title: Optional[str]
+    author: Optional[str]
