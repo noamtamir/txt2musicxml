@@ -33,9 +33,15 @@ Bbmaj7/F Bb7 | C7/E Ebm6 :||
 - More examples: [./examples/](./examples/)
 
 ## Export to PDF (with MuseScore)
-[Install MuseScore 3](https://musescore.org/en/download) and make sure to add `mscore` to your PATH. Not fully tested with v4. `%` doesn't work in v3.
+[Install MuseScore](https://musescore.org/en/download) and make sure to add `mscore` to your PATH. Tested with v4. `%` doesn't work in v3, otherwise works fine.
 ```shell
 TMPSUFFIX=.musicxml; mscore -o path/to/output.pdf =(txt2musicxml < path/to/input.crd)
+```
+
+## Import from a link (curl)
+Since the CLI is fully pipe-able, you can use cURL to pipe any text file hosted on the web, as long as it adheres to the syntax. Example:
+```shell
+curl https://raw.githubusercontent.com/noamtamir/chords/refs/heads/main/I%20heard%20it%20through%20the%20grapvine%20-%20ccr.crd | txt2musicxml
 ```
 
 ## Developing Locally
