@@ -27,12 +27,12 @@ Gbmaj7#5/Bb
 - **Bass**: Same as note, but must have a slash (/) before it and must come after a root (+ optional alteration and/or suffix ). No whitespace is allowed before or after the slash. E.g `/G`
 
 ## Bar
-A bar consists of multiple chords separated by whitespace, following a barline. It could also be a repeat bar, also followed by a bar line. Optionally, a rehearsal mark or a time signature can be added at the beginning. If both are added, the order matters. Put the rehearsal mark first.
+A bar consists of multiple chords separated by whitespace, following a barline. It could also be a repeat bar, also followed by a bar line. Optionally, a rehearsal mark, time signature or key signature can be added at the beginning. If they are added, the order matters, they must appear in the following order: Rehearsal Mark, Key Signature, Time Signature.
 - Barline: `|`, `||`, `:||`
 - Repeat Bar: `%`
 - Rehearsal mark: `[Any text]`
 ```
-[Verse] 6/8 Gm6 Cm7b5/Gb | % |
+[Verse] bb 6/8 Gm6 Cm7b5/Gb | % |
 ```
 
 ## Rhythm
@@ -59,6 +59,21 @@ Can be added at the beginning of a bar with with the following syntax: `NUMBER/N
 3/4 C | F | G | 4/4 Am G | F | 5/8 Dm | E / / E7 / ||
 ```
 
+### Rehearsal Marks
+Can be added at the beginning of a bar with with the following syntax: `[TEXT]`. Examples:
+```
+[A] C | F | G |
+[B] Am G | F |
+[Outro] Dm | E E7 ||
+```
+
+### Key Signature
+Put the amount of `#` or `b` of the signature a t the beginning of the bar. Examples:
+```
+# G | C | D |
+## D G | A |
+bbb Cm | Fm G7 ||
+```
 
 ### Known bugs
 1. The current algorithm attempts to distribute chords equally in a bar, and if it can't it splits the duration of the later chords of the bar. This is a decent default for most use cases of pop/rock/jazz, imho. This doesn't work perfectly in all cases especially in odd time signatures (i.e. 5/8, 7/8), or mismatching number of chords in bar (i.e. 2 chords in a 3/8 bar). To avoid problems, I suggest to be explicit about the rhythm using slashes (`/`) in those cases (i.e. `Cmaj / G7`).

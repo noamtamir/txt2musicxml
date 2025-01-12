@@ -146,6 +146,11 @@ class TimeSignature(BaseNode):
 
 
 @dataclass
+class KeySignature(Alteration):
+    pass
+
+
+@dataclass
 class Bar(BaseNode):
     chords: Optional[List[Union[Chord, Slash]]] = None
     chord_amount: int = field(init=False)
@@ -153,6 +158,8 @@ class Bar(BaseNode):
     right_barline: Barline = Barline.REGULAR
     timesignature: TimeSignature = field(default_factory=TimeSignature)
     rehearsal_mark: Optional[str] = None
+    key_signature: Optional[KeySignature] = None
+    latest_key_signature: Optional[KeySignature] = None
 
     def __post_init__(self):
         if self.chords:

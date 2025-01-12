@@ -16,7 +16,7 @@ def serializedATN():
         4,
         1,
         12,
-        109,
+        114,
         2,
         0,
         7,
@@ -120,9 +120,20 @@ def serializedATN():
         2,
         1,
         2,
+        1,
+        2,
         3,
         2,
-        49,
+        50,
+        8,
+        2,
+        1,
+        2,
+        1,
+        2,
+        3,
+        2,
+        54,
         8,
         2,
         1,
@@ -133,28 +144,28 @@ def serializedATN():
         2,
         5,
         2,
-        54,
+        59,
         8,
         2,
         10,
         2,
         12,
         2,
-        57,
+        62,
         9,
         2,
         1,
         2,
         3,
         2,
-        60,
+        65,
         8,
         2,
         1,
         2,
         3,
         2,
-        63,
+        68,
         8,
         2,
         1,
@@ -163,12 +174,12 @@ def serializedATN():
         2,
         3,
         2,
-        67,
+        72,
         8,
         2,
         3,
         2,
-        69,
+        74,
         8,
         2,
         1,
@@ -181,7 +192,7 @@ def serializedATN():
         3,
         3,
         3,
-        75,
+        80,
         8,
         3,
         1,
@@ -208,7 +219,7 @@ def serializedATN():
         4,
         3,
         4,
-        88,
+        93,
         8,
         4,
         1,
@@ -221,18 +232,18 @@ def serializedATN():
         6,
         3,
         6,
-        94,
-        8,
-        6,
-        1,
-        7,
-        1,
-        7,
-        1,
-        7,
-        3,
-        7,
         99,
+        8,
+        6,
+        1,
+        7,
+        1,
+        7,
+        1,
+        7,
+        3,
+        7,
+        104,
         8,
         7,
         1,
@@ -274,7 +285,7 @@ def serializedATN():
         0,
         8,
         10,
-        113,
+        119,
         0,
         25,
         1,
@@ -288,61 +299,61 @@ def serializedATN():
         0,
         0,
         4,
-        68,
+        73,
         1,
         0,
         0,
         0,
         6,
-        74,
+        79,
         1,
         0,
         0,
         0,
         8,
-        87,
+        92,
         1,
         0,
         0,
         0,
         10,
-        89,
+        94,
         1,
         0,
         0,
         0,
         12,
-        91,
+        96,
         1,
         0,
         0,
         0,
         14,
-        95,
-        1,
-        0,
-        0,
-        0,
-        16,
         100,
         1,
         0,
         0,
         0,
+        16,
+        105,
+        1,
+        0,
+        0,
+        0,
         18,
-        102,
+        107,
         1,
         0,
         0,
         0,
         20,
-        104,
+        109,
         1,
         0,
         0,
         0,
         22,
-        106,
+        111,
         1,
         0,
         0,
@@ -504,31 +515,31 @@ def serializedATN():
         0,
         0,
         45,
-        48,
+        49,
         1,
         0,
         0,
         0,
         46,
         47,
-        5,
-        5,
-        0,
+        3,
+        18,
+        9,
         0,
         47,
-        49,
+        48,
         5,
         12,
         0,
         0,
         48,
-        46,
+        50,
         1,
         0,
         0,
         0,
-        48,
         49,
+        46,
         1,
         0,
         0,
@@ -540,22 +551,22 @@ def serializedATN():
         0,
         0,
         50,
-        55,
-        3,
-        6,
-        3,
+        53,
+        1,
+        0,
+        0,
         0,
         51,
         52,
         5,
-        12,
+        5,
         0,
         0,
         52,
         54,
-        3,
-        6,
-        3,
+        5,
+        12,
+        0,
         0,
         53,
         51,
@@ -563,412 +574,449 @@ def serializedATN():
         0,
         0,
         0,
-        54,
-        57,
-        1,
-        0,
-        0,
-        0,
-        55,
         53,
+        54,
+        1,
+        0,
+        0,
+        0,
+        54,
+        55,
         1,
         0,
         0,
         0,
         55,
+        60,
+        3,
+        6,
+        3,
+        0,
         56,
-        1,
-        0,
-        0,
-        0,
-        56,
-        59,
-        1,
-        0,
+        57,
+        5,
+        12,
         0,
         0,
         57,
-        55,
-        1,
-        0,
-        0,
-        0,
-        58,
-        60,
-        5,
-        12,
-        0,
-        0,
         59,
-        58,
-        1,
-        0,
-        0,
-        0,
-        59,
-        60,
-        1,
-        0,
-        0,
-        0,
-        60,
-        69,
-        1,
-        0,
-        0,
-        0,
-        61,
-        63,
-        5,
-        12,
-        0,
-        0,
-        62,
-        61,
-        1,
-        0,
-        0,
-        0,
-        62,
-        63,
-        1,
-        0,
-        0,
-        0,
-        63,
-        64,
-        1,
-        0,
-        0,
-        0,
-        64,
-        66,
-        5,
-        1,
-        0,
-        0,
-        65,
-        67,
-        5,
-        12,
-        0,
-        0,
-        66,
-        65,
-        1,
-        0,
-        0,
-        0,
-        66,
-        67,
-        1,
-        0,
-        0,
-        0,
-        67,
-        69,
-        1,
-        0,
-        0,
-        0,
-        68,
-        40,
-        1,
-        0,
-        0,
-        0,
-        68,
-        62,
-        1,
-        0,
-        0,
-        0,
-        69,
-        70,
-        1,
-        0,
-        0,
-        0,
-        70,
-        71,
         3,
-        22,
-        11,
+        6,
+        3,
         0,
+        58,
+        56,
+        1,
+        0,
+        0,
+        0,
+        59,
+        62,
+        1,
+        0,
+        0,
+        0,
+        60,
+        58,
+        1,
+        0,
+        0,
+        0,
+        60,
+        61,
+        1,
+        0,
+        0,
+        0,
+        61,
+        64,
+        1,
+        0,
+        0,
+        0,
+        62,
+        60,
+        1,
+        0,
+        0,
+        0,
+        63,
+        65,
+        5,
+        12,
+        0,
+        0,
+        64,
+        63,
+        1,
+        0,
+        0,
+        0,
+        64,
+        65,
+        1,
+        0,
+        0,
+        0,
+        65,
+        74,
+        1,
+        0,
+        0,
+        0,
+        66,
+        68,
+        5,
+        12,
+        0,
+        0,
+        67,
+        66,
+        1,
+        0,
+        0,
+        0,
+        67,
+        68,
+        1,
+        0,
+        0,
+        0,
+        68,
+        69,
+        1,
+        0,
+        0,
+        0,
+        69,
         71,
         5,
+        1,
+        0,
+        0,
+        70,
+        72,
+        5,
+        12,
+        0,
+        0,
+        71,
+        70,
+        1,
+        0,
+        0,
+        0,
+        71,
+        72,
         1,
         0,
         0,
         0,
         72,
+        74,
+        1,
+        0,
+        0,
+        0,
+        73,
+        40,
+        1,
+        0,
+        0,
+        0,
+        73,
+        67,
+        1,
+        0,
+        0,
+        0,
+        74,
         75,
+        1,
+        0,
+        0,
+        0,
+        75,
+        76,
+        3,
+        22,
+        11,
+        0,
+        76,
+        5,
+        1,
+        0,
+        0,
+        0,
+        77,
+        80,
         3,
         8,
         4,
         0,
-        73,
-        75,
+        78,
+        80,
         3,
         10,
         5,
         0,
-        74,
-        72,
-        1,
-        0,
-        0,
-        0,
-        74,
-        73,
-        1,
-        0,
-        0,
-        0,
-        75,
-        7,
-        1,
-        0,
-        0,
-        0,
-        76,
-        88,
-        3,
-        12,
-        6,
-        0,
-        77,
-        78,
-        3,
-        12,
-        6,
-        0,
-        78,
         79,
-        3,
-        20,
-        10,
-        0,
-        79,
-        88,
-        1,
-        0,
-        0,
-        0,
-        80,
-        81,
-        3,
-        12,
-        6,
-        0,
-        81,
-        82,
-        3,
-        14,
-        7,
-        0,
-        82,
-        88,
-        1,
-        0,
-        0,
-        0,
-        83,
-        84,
-        3,
-        12,
-        6,
-        0,
-        84,
-        85,
-        3,
-        20,
-        10,
-        0,
-        85,
-        86,
-        3,
-        14,
-        7,
-        0,
-        86,
-        88,
-        1,
-        0,
-        0,
-        0,
-        87,
-        76,
-        1,
-        0,
-        0,
-        0,
-        87,
         77,
         1,
         0,
         0,
         0,
-        87,
-        80,
+        79,
+        78,
         1,
         0,
         0,
         0,
-        87,
+        80,
+        7,
+        1,
+        0,
+        0,
+        0,
+        81,
+        93,
+        3,
+        12,
+        6,
+        0,
+        82,
         83,
+        3,
+        12,
+        6,
+        0,
+        83,
+        84,
+        3,
+        20,
+        10,
+        0,
+        84,
+        93,
+        1,
+        0,
+        0,
+        0,
+        85,
+        86,
+        3,
+        12,
+        6,
+        0,
+        86,
+        87,
+        3,
+        14,
+        7,
+        0,
+        87,
+        93,
         1,
         0,
         0,
         0,
         88,
+        89,
+        3,
+        12,
+        6,
+        0,
+        89,
+        90,
+        3,
+        20,
+        10,
+        0,
+        90,
+        91,
+        3,
+        14,
+        7,
+        0,
+        91,
+        93,
+        1,
+        0,
+        0,
+        0,
+        92,
+        81,
+        1,
+        0,
+        0,
+        0,
+        92,
+        82,
+        1,
+        0,
+        0,
+        0,
+        92,
+        85,
+        1,
+        0,
+        0,
+        0,
+        92,
+        88,
+        1,
+        0,
+        0,
+        0,
+        93,
         9,
         1,
         0,
         0,
         0,
-        89,
-        90,
+        94,
+        95,
         5,
         7,
         0,
         0,
-        90,
+        95,
         11,
         1,
         0,
         0,
         0,
-        91,
-        93,
+        96,
+        98,
         3,
         16,
         8,
         0,
-        92,
-        94,
+        97,
+        99,
         3,
         18,
         9,
         0,
-        93,
-        92,
+        98,
+        97,
         1,
         0,
         0,
         0,
-        93,
-        94,
+        98,
+        99,
         1,
         0,
         0,
         0,
-        94,
+        99,
         13,
         1,
         0,
         0,
         0,
-        95,
-        96,
+        100,
+        101,
         5,
         7,
         0,
         0,
-        96,
-        98,
+        101,
+        103,
         3,
         16,
         8,
         0,
-        97,
-        99,
+        102,
+        104,
         3,
         18,
         9,
         0,
-        98,
-        97,
-        1,
-        0,
-        0,
-        0,
-        98,
-        99,
-        1,
-        0,
-        0,
-        0,
-        99,
-        15,
-        1,
-        0,
-        0,
-        0,
-        100,
-        101,
-        5,
-        3,
-        0,
-        0,
-        101,
-        17,
-        1,
-        0,
-        0,
-        0,
+        103,
         102,
-        103,
-        5,
-        4,
+        1,
         0,
         0,
+        0,
         103,
-        19,
+        104,
         1,
         0,
         0,
         0,
         104,
+        15,
+        1,
+        0,
+        0,
+        0,
         105,
+        106,
+        5,
+        3,
+        0,
+        0,
+        106,
+        17,
+        1,
+        0,
+        0,
+        0,
+        107,
+        108,
+        5,
+        4,
+        0,
+        0,
+        108,
+        19,
+        1,
+        0,
+        0,
+        0,
+        109,
+        110,
         5,
         6,
         0,
         0,
-        105,
+        110,
         21,
         1,
         0,
         0,
         0,
-        106,
-        107,
+        111,
+        112,
         7,
         0,
         0,
         0,
-        107,
+        112,
         23,
         1,
         0,
         0,
         0,
-        15,
+        16,
         27,
         32,
         37,
         40,
         44,
-        48,
-        55,
-        59,
-        62,
-        66,
-        68,
-        74,
-        87,
-        93,
+        49,
+        53,
+        60,
+        64,
+        67,
+        71,
+        73,
+        79,
+        92,
         98,
+        103,
     ]
 
 
@@ -1116,7 +1164,7 @@ class ChordsParser(Parser):
                 self.state = 27
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3F) == 0 and ((1 << _la) & 6318) != 0)):
+                if not ((((_la) & ~0x3F) == 0 and ((1 << _la) & 6334) != 0)):
                     break
 
             self.state = 29
@@ -1242,6 +1290,9 @@ class ChordsParser(Parser):
         def REHEARSAL(self):
             return self.getToken(ChordsParser.REHEARSAL, 0)
 
+        def alteration(self):
+            return self.getTypedRuleContext(ChordsParser.AlterationContext, 0)
+
         def TIME_SIGNATURE(self):
             return self.getToken(ChordsParser.TIME_SIGNATURE, 0)
 
@@ -1269,9 +1320,9 @@ class ChordsParser(Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 68
+            self.state = 73
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input, 10, self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 11, self._ctx)
             if la_ == 1:
                 self.state = 40
                 self._errHandler.sync(self)
@@ -1289,61 +1340,70 @@ class ChordsParser(Parser):
                     self.state = 43
                     self.match(ChordsParser.WHITESPACE)
 
-                self.state = 48
+                self.state = 49
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la == 5:
+                if _la == 4:
                     self.state = 46
-                    self.match(ChordsParser.TIME_SIGNATURE)
+                    self.alteration()
                     self.state = 47
                     self.match(ChordsParser.WHITESPACE)
 
-                self.state = 50
-                self.chord_or_slash()
-                self.state = 55
+                self.state = 53
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input, 6, self._ctx)
+                _la = self._input.LA(1)
+                if _la == 5:
+                    self.state = 51
+                    self.match(ChordsParser.TIME_SIGNATURE)
+                    self.state = 52
+                    self.match(ChordsParser.WHITESPACE)
+
+                self.state = 55
+                self.chord_or_slash()
+                self.state = 60
+                self._errHandler.sync(self)
+                _alt = self._interp.adaptivePredict(self._input, 7, self._ctx)
                 while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
                     if _alt == 1:
-                        self.state = 51
+                        self.state = 56
                         self.match(ChordsParser.WHITESPACE)
-                        self.state = 52
+                        self.state = 57
                         self.chord_or_slash()
-                    self.state = 57
+                    self.state = 62
                     self._errHandler.sync(self)
                     _alt = self._interp.adaptivePredict(
-                        self._input, 6, self._ctx
+                        self._input, 7, self._ctx
                     )
 
-                self.state = 59
+                self.state = 64
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la == 12:
-                    self.state = 58
+                    self.state = 63
                     self.match(ChordsParser.WHITESPACE)
 
                 pass
 
             elif la_ == 2:
-                self.state = 62
+                self.state = 67
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la == 12:
-                    self.state = 61
+                    self.state = 66
                     self.match(ChordsParser.WHITESPACE)
 
-                self.state = 64
+                self.state = 69
                 self.match(ChordsParser.MEASURE_REPEAT)
-                self.state = 66
+                self.state = 71
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la == 12:
-                    self.state = 65
+                    self.state = 70
                     self.match(ChordsParser.WHITESPACE)
 
                 pass
 
-            self.state = 70
+            self.state = 75
             self.right_barlines()
         except RecognitionException as re:
             localctx.exception = re
@@ -1395,17 +1455,17 @@ class ChordsParser(Parser):
         )
         self.enterRule(localctx, 6, self.RULE_chord_or_slash)
         try:
-            self.state = 74
+            self.state = 79
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [3]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 72
+                self.state = 77
                 self.chord()
                 pass
             elif token in [7]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 73
+                self.state = 78
                 self.slash()
                 pass
             else:
@@ -1462,38 +1522,38 @@ class ChordsParser(Parser):
         localctx = ChordsParser.ChordContext(self, self._ctx, self.state)
         self.enterRule(localctx, 8, self.RULE_chord)
         try:
-            self.state = 87
+            self.state = 92
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input, 12, self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 13, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 76
+                self.state = 81
                 self.root()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 77
+                self.state = 82
                 self.root()
-                self.state = 78
+                self.state = 83
                 self.suffix()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 80
+                self.state = 85
                 self.root()
-                self.state = 81
+                self.state = 86
                 self.bass()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 83
+                self.state = 88
                 self.root()
-                self.state = 84
+                self.state = 89
                 self.suffix()
-                self.state = 85
+                self.state = 90
                 self.bass()
                 pass
 
@@ -1543,7 +1603,7 @@ class ChordsParser(Parser):
         self.enterRule(localctx, 10, self.RULE_slash)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 89
+            self.state = 94
             self.match(ChordsParser.SLASH)
         except RecognitionException as re:
             localctx.exception = re
@@ -1595,13 +1655,13 @@ class ChordsParser(Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 91
+            self.state = 96
             self.note()
-            self.state = 93
+            self.state = 98
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la == 4:
-                self.state = 92
+                self.state = 97
                 self.alteration()
 
         except RecognitionException as re:
@@ -1657,15 +1717,15 @@ class ChordsParser(Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 95
+            self.state = 100
             self.match(ChordsParser.SLASH)
-            self.state = 96
+            self.state = 101
             self.note()
-            self.state = 98
+            self.state = 103
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la == 4:
-                self.state = 97
+                self.state = 102
                 self.alteration()
 
         except RecognitionException as re:
@@ -1714,7 +1774,7 @@ class ChordsParser(Parser):
         self.enterRule(localctx, 16, self.RULE_note)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 100
+            self.state = 105
             self.match(ChordsParser.NOTE)
         except RecognitionException as re:
             localctx.exception = re
@@ -1762,7 +1822,7 @@ class ChordsParser(Parser):
         self.enterRule(localctx, 18, self.RULE_alteration)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 102
+            self.state = 107
             self.match(ChordsParser.ALTERATION)
         except RecognitionException as re:
             localctx.exception = re
@@ -1810,7 +1870,7 @@ class ChordsParser(Parser):
         self.enterRule(localctx, 20, self.RULE_suffix)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 104
+            self.state = 109
             self.match(ChordsParser.SUFFIX)
         except RecognitionException as re:
             localctx.exception = re
@@ -1867,7 +1927,7 @@ class ChordsParser(Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 106
+            self.state = 111
             _la = self._input.LA(1)
             if not ((((_la) & ~0x3F) == 0 and ((1 << _la) & 1792) != 0)):
                 self._errHandler.recoverInline(self)

@@ -13,6 +13,7 @@ from txt2musicxml.models import (
     BassAlteration,
     BassNote,
     Chord,
+    KeySignature,
     Line,
     Root,
     RootAlteration,
@@ -26,6 +27,7 @@ from txt2musicxml.models import (
 
 class ConcreteChordsVisitor(ChordsVisitor):
     curr_time_signature: TimeSignature = TimeSignature()
+    latest_key_signature: Optional[KeySignature] = None
 
     # Visit a parse tree produced by ChordsParser#sheet.
     def visitSheet(self, ctx: ChordsParser.SheetContext) -> Sheet:
@@ -47,6 +49,11 @@ class ConcreteChordsVisitor(ChordsVisitor):
             rehearsal_mark = rehearsal_mark_ctx.getText()[
                 1:-1
             ]  # strip brackets []
+        key_signature_ctx = ctx.alteration()
+        key_signature: Optional[KeySignature] = None
+        if key_signature_ctx:
+            key_signature = self.visit(key_signature_ctx)
+            self.latest_key_signature = key_signature
         time_signature_ctx = ctx.TIME_SIGNATURE()
         time_signature = self.curr_time_signature
         if time_signature_ctx:
@@ -67,6 +74,8 @@ class ConcreteChordsVisitor(ChordsVisitor):
                 right_barline=right_barline,
                 timesignature=time_signature,
                 rehearsal_mark=rehearsal_mark,
+                key_signature=key_signature,
+                latest_key_signature=self.latest_key_signature,
             )
         elif measure_repeat_ctx:
             return Bar(measure_repeat=True, right_barline=right_barline)
@@ -123,6 +132,8 @@ class ConcreteChordsVisitor(ChordsVisitor):
             return RootAlteration(ctx.getText())
         if self._is_child_of_bass_ctx(ctx):
             return BassAlteration(ctx.getText())
+        if self._is_child_of(ctx, ChordsParser.BarContext):
+            return KeySignature(ctx.getText())
         raise  # It must be one of them. rasing to satisfy type checker
 
     # Visit a parse tree produced by ChordsParser#suffix.

@@ -187,6 +187,7 @@ class ChordXmlGenerator:
     ast_node: Union[Chord, Slash]
     duration: int
     quarter_note_divisions: int
+    alteration: Optional[str] = None
 
     def generate_xml(self) -> list[Element]:
         elements: list[Element] = []
@@ -208,6 +209,9 @@ class ChordXmlGenerator:
         pitch_element = SubElement(note_element, "pitch")
         pitch_step_element = SubElement(pitch_element, "step")
         pitch_step_element.text = MIDDLE_LINE_ON_G_CLEF
+        if self.alteration:
+            pitch_alter_element = SubElement(pitch_element, "alter")
+            pitch_alter_element.text = self.alteration
         pitch_octave_element = SubElement(pitch_element, "octave")
         pitch_octave_element.text = MIDDLE_OCTAVE_ON_G_CLEF
         duration_per_divisions = self.duration / self.quarter_note_divisions
@@ -242,11 +246,14 @@ class ChordXmlGenerator:
         elements.extend(extra_slashes)
         return elements
 
-    def _add_slash(self):
+    def _add_slash(self) -> Element:
         note_element = Element("note")
         pitch_element = SubElement(note_element, "pitch")
         pitch_step_element = SubElement(pitch_element, "step")
         pitch_step_element.text = MIDDLE_LINE_ON_G_CLEF
+        if self.alteration:
+            pitch_alter_element = SubElement(pitch_element, "alter")
+            pitch_alter_element.text = self.alteration
         pitch_octave_element = SubElement(pitch_element, "octave")
         pitch_octave_element.text = MIDDLE_OCTAVE_ON_G_CLEF
         duration = self.quarter_note_divisions  # quarter note
@@ -297,13 +304,8 @@ class BarXmlGenerator:
             divisions_element = SubElement(attributes_element, "divisions")
             divisions_element.text = str(self.divisions)
         if is_first_bar_in_sheet:
-            key_element = SubElement(
-                attributes_element, "key"
-            )  # TODO: add key signature support?
-            fifths_element = SubElement(key_element, "fifths")
-            fifths_element.text = "0"
-            mode_element = SubElement(key_element, "mode")
-            mode_element.text = "major"
+            key_element = self._generate_key_element()
+            attributes_element.append(key_element)
             time_element = self._generate_timesignature_element()
             attributes_element.append(time_element)
             clef_element = SubElement(attributes_element, "clef")
@@ -314,10 +316,14 @@ class BarXmlGenerator:
         if self.ast_node.rehearsal_mark:
             rehearsal_mark_element = self._generate_rehearsal_mark_element()
             measure_element.append(rehearsal_mark_element)
+        if self.ast_node.key_signature and not is_first_bar_in_sheet:
+            key_element = self._generate_key_element()
+            attributes_element.append(key_element)
         if self.ast_node.timesignature.should_print:
             time_element = self._generate_timesignature_element()
             attributes_element.append(time_element)
         if self.ast_node.chords:
+            slash_alteration = self._get_slash_alteration()
             chord_elements: list[Element] = []
             for duration_and_chord in list(
                 zip(self.ast_node.chords, self.chord_durations)
@@ -327,6 +333,7 @@ class BarXmlGenerator:
                         duration_and_chord[0],
                         duration_and_chord[1],
                         self.divisions,
+                        slash_alteration,
                     ).generate_xml()
                 )
             measure_element.extend(chord_elements)
@@ -385,6 +392,35 @@ class BarXmlGenerator:
         beat_type_element = SubElement(time_element, "beat-type")
         beat_type_element.text = str(self.ast_node.timesignature.denominator)
         return time_element
+
+    def _generate_key_element(self) -> Element:
+        key_element = Element("key")
+        fifths_element = SubElement(key_element, "fifths")
+        fifths_element.text = (
+            self.ast_node.key_signature.value
+            if self.ast_node.key_signature
+            else "0"
+        )
+        # is the following needed?
+        mode_element = SubElement(key_element, "mode")
+        mode_element.text = "major"
+        return key_element
+
+    def _get_slash_alteration(self) -> Optional[str]:
+        key_signature = self.ast_node.key_signature
+        latest_key_signature = self.ast_node.latest_key_signature
+
+        if not key_signature and not latest_key_signature:
+            return None
+        elif not key_signature and latest_key_signature:
+            v = int(latest_key_signature.value)
+        elif key_signature:
+            v = int(key_signature.value)
+        if v <= -1:  # includes B flat
+            return "-1"
+        elif v >= 7:  # includes B sharp in key signature
+            return "1"
+        return None
 
     def _validate_timesignature_denominator(self):
         # TODO: handle error
