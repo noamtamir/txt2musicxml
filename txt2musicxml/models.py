@@ -156,6 +156,7 @@ class Bar(BaseNode):
     chord_amount: int = field(init=False)
     measure_repeat: bool = False
     right_barline: Barline = Barline.REGULAR
+    left_barline: Barline = Barline.REGULAR
     timesignature: TimeSignature = field(default_factory=TimeSignature)
     rehearsal_mark: Optional[str] = None
     key_signature: Optional[KeySignature] = None

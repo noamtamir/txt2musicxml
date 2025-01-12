@@ -98,6 +98,14 @@ class ChordsListener(ParseTreeListener):
     def exitSuffix(self, ctx: ChordsParser.SuffixContext):
         pass
 
+    # Enter a parse tree produced by ChordsParser#left_barlines.
+    def enterLeft_barlines(self, ctx: ChordsParser.Left_barlinesContext):
+        pass
+
+    # Exit a parse tree produced by ChordsParser#left_barlines.
+    def exitLeft_barlines(self, ctx: ChordsParser.Left_barlinesContext):
+        pass
+
     # Enter a parse tree produced by ChordsParser#right_barlines.
     def enterRight_barlines(self, ctx: ChordsParser.Right_barlinesContext):
         pass

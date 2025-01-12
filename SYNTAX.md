@@ -27,12 +27,13 @@ Gbmaj7#5/Bb
 - **Bass**: Same as note, but must have a slash (/) before it and must come after a root (+ optional alteration and/or suffix ). No whitespace is allowed before or after the slash. E.g `/G`
 
 ## Bar
-A bar consists of multiple chords separated by whitespace, following a barline. It could also be a repeat bar, also followed by a bar line. Optionally, a rehearsal mark, time signature or key signature can be added at the beginning. If they are added, the order matters, they must appear in the following order: Rehearsal Mark, Key Signature, Time Signature.
-- Barline: `|`, `||`, `:||`
+A bar consists of multiple chords separated by whitespace, following a barline. Optionally, a bar can start with a forward repeat barline. It could also be a repeat bar, also followed by a bar line. Optionally, a rehearsal mark, time signature or key signature can be added at the beginning. If they are added, the order matters, they must appear in the following order: Rehearsal Mark, Forward Repeat Barline Key Signature, Time Signature.
+- Right Barline: `|`, `||`, `:||`, `:||:`
+- Forward Repeat Barline: `||:` (only type of barline supported as left barline)
 - Repeat Bar: `%`
 - Rehearsal mark: `[Any text]`
 ```
-[Verse] bb 6/8 Gm6 Cm7b5/Gb | % |
+[Verse] ||: bb 6/8 Gm6 Cm7b5/Gb | % :||
 ```
 
 ## Rhythm

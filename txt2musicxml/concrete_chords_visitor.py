@@ -28,6 +28,7 @@ from txt2musicxml.models import (
 class ConcreteChordsVisitor(ChordsVisitor):
     curr_time_signature: TimeSignature = TimeSignature()
     latest_key_signature: Optional[KeySignature] = None
+    prev_bar_was_double_sided_repeat: bool = False
 
     # Visit a parse tree produced by ChordsParser#sheet.
     def visitSheet(self, ctx: ChordsParser.SheetContext) -> Sheet:
@@ -67,11 +68,24 @@ class ConcreteChordsVisitor(ChordsVisitor):
         chords_ctx = ctx.chord_or_slash()
         measure_repeat_ctx = ctx.MEASURE_REPEAT()
         right_barline = self.visit(ctx.right_barlines())
+        left_barline_ctx = ctx.left_barlines()
+        if left_barline_ctx:
+            left_barline = self.visit(ctx.left_barlines())
+        else:
+            left_barline = Barline.REGULAR
+        if right_barline is Barline.DOUBLE_SIDED_REPEAT:
+            right_barline = Barline.REPEAT
+            self.prev_bar_was_double_sided_repeat = True
+        if self.prev_bar_was_double_sided_repeat:
+            left_barline = Barline.FORWARD_REPEAT
+            if right_barline is not Barline.DOUBLE_SIDED_REPEAT:
+                self.prev_bar_was_double_sided_repeat = False
         if chords_ctx:
             chords = [self.visit(chord) for chord in chords_ctx]
             return Bar(
                 chords=chords,
                 right_barline=right_barline,
+                left_barline=left_barline,
                 timesignature=time_signature,
                 rehearsal_mark=rehearsal_mark,
                 key_signature=key_signature,
@@ -83,6 +97,12 @@ class ConcreteChordsVisitor(ChordsVisitor):
 
     def visitRight_barlines(
         self, ctx: ChordsParser.Right_barlinesContext
+    ) -> Barline:
+        barline_text = ctx.getText()
+        return get_barline_from_text(barline_text)
+
+    def visitLeft_barlines(
+        self, ctx: ChordsParser.Left_barlinesContext
     ) -> Barline:
         barline_text = ctx.getText()
         return get_barline_from_text(barline_text)

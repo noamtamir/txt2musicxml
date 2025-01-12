@@ -288,6 +288,11 @@ class BarXmlGenerator:
     ) -> Element:
         measure_element = Element("measure")
         measure_element.attrib["number"] = str(next(bar_counter))
+        if (
+            self.ast_node.left_barline != Barline.REGULAR
+        ):  # implicit when it is a regular barline
+            left_barline = self._generate_barline(self.ast_node.left_barline)
+            measure_element.append(left_barline)
         if new_line:
             SubElement(measure_element, "print", {"new-system": "yes"})
         attributes_element = SubElement(measure_element, "attributes")
@@ -358,6 +363,7 @@ class BarXmlGenerator:
             Barline.REGULAR: "regular",
             Barline.DOUBLE: "light-heavy",
             Barline.REPEAT: "light-heavy",
+            Barline.FORWARD_REPEAT: "heavy-light",
         }
 
         barline_element = Element("barline")  # location is implicitly right
@@ -366,9 +372,10 @@ class BarXmlGenerator:
             bar_style.text = BAR_STYLE_BARLINE_MAP.get(barline, "regular")
             barline_element.append(bar_style)
         if barline is Barline.REPEAT:
-            repeat = Element(
-                "repeat", {"direction": "backward"}
-            )  # only support backward repeat for now
+            repeat = Element("repeat", {"direction": "backward"})
+            barline_element.append(repeat)
+        if barline is Barline.FORWARD_REPEAT:
+            repeat = Element("repeat", {"direction": "forward"})
             barline_element.append(repeat)
         return barline_element
 

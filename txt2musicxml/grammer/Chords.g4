@@ -3,7 +3,7 @@ grammar Chords;
 sheet: line+ EOF;
 line: NEWLINE? bar+;
 bar:
-	((WHITESPACE? (REHEARSAL WHITESPACE)? (alteration WHITESPACE)? (TIME_SIGNATURE WHITESPACE)? chord_or_slash (WHITESPACE chord_or_slash)* WHITESPACE?) | (WHITESPACE? MEASURE_REPEAT WHITESPACE?)) right_barlines; // WHITESPACE? timeSignature? 
+	(REHEARSAL WHITESPACE)? left_barlines? ((WHITESPACE? (alteration WHITESPACE)? (TIME_SIGNATURE WHITESPACE)? chord_or_slash (WHITESPACE chord_or_slash)* WHITESPACE?) | (WHITESPACE? MEASURE_REPEAT WHITESPACE?)) right_barlines;
 chord_or_slash: chord | slash;
 chord: root | root suffix | root bass | root suffix bass;
 slash: SLASH;
@@ -12,7 +12,8 @@ bass: SLASH note alteration?;
 note: NOTE;
 alteration: ALTERATION;
 suffix: SUFFIX;
-right_barlines: BARLINE | DOUBLE_BARLINE | REPEAT_BARLINE;
+left_barlines: FORWARD_REPEAT_BARLINE;
+right_barlines: BARLINE | DOUBLE_BARLINE | REPEAT_BARLINE | DOUBLE_SIDED_REPEAT_BARLINE;
 MEASURE_REPEAT: '%';
 REHEARSAL: '[' [A-Za-z0-9 ]+ ']' ;
 NOTE: [A-G];
@@ -20,6 +21,8 @@ ALTERATION: 'b'+ | '#'+;
 TIME_SIGNATURE: [0-9]+ '/' [0-9]+;
 SUFFIX: ([15679^admosø+\-] | '#5') [0-9abdgijmosuø^#+,\-]*;
 SLASH: '/';
+DOUBLE_SIDED_REPEAT_BARLINE: ':||:';
+FORWARD_REPEAT_BARLINE: '||:';
 REPEAT_BARLINE: ':||';
 DOUBLE_BARLINE: '||';
 BARLINE: '|';
